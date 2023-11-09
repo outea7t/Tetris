@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainMenu.swift
 //  Tetris
 //
 //  Created by Out East on 11.10.2023.

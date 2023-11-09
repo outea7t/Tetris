@@ -60,7 +60,7 @@ class Tetromino {
     var lastTime: TimeInterval = 0
     
     var projectionPositions = [Position]()
-    func moveToBottom(cells: [[Cell]]) {
+    func moveToBottom(frame: Frame, gameScene: GameScene) {
         guard !self.isLocked else {
             return
         }
@@ -73,19 +73,7 @@ class Tetromino {
         
         self.positions = destinationPositions
         
-        
-        GameScene.shared.updateCells(shouldComputeProjection: false)
-        GameScene.shared.checkFullRows()
-        if GameScene.shared.checkIfShouldLockCells() {
-            GameScene.shared.addTetrominoInCells(tetromino: GameScene.shared.nextTetrominos.removeFirst())
-            
-            if let tetromino = GameScene.shared.randomTetromino() {
-                GameScene.shared.nextTetrominos.append(tetromino)
-                
-                GameScene.shared.changeTetrominoInNextView(type: tetromino.type)
-            }
-        }
-//        self.isLocked = true
+        frame.moveShapeToBottom(gameScene: gameScene)
     }
     /// двигает фигуру вниз
     func moveDown(cells: [[Cell]]) {
@@ -267,7 +255,7 @@ class Tetromino {
         
     }
     
-    static func setSkins(isSkinsSet: inout Bool) {
+    static func setSkins() {
         let names = ["I", "S", "Z", "L", "J", "O", "T"]
 
         for i in 0..<UserCustomization.maxTetrominoSkinIndex {
@@ -282,6 +270,5 @@ class Tetromino {
             self.skins.append(TetrominoSkin(skins: skinSet))
         }
         
-        isSkinsSet = true
     }
 }

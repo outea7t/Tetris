@@ -8,12 +8,6 @@
 import SwiftUI
 import SpriteKit
 
-fileprivate class TouchTimeInformation {
-    /// задержка после мгновенного спуска фигуры
-    static var touchTimeDelay: TimeInterval = 0.3
-    /// время последнего мгновенного спуска фигуры
-    static var lastMoveToBottomTime: TimeInterval = 0.0
-}
 struct GameView: View {
     
     var scene: GameScene {
@@ -61,13 +55,7 @@ struct GameView: View {
                 )
             // MARK: OnTap Gesture
                 .onTapGesture {
-                    guard !self.scene.isGamePaused else {
-                        return
-                    }
-                    for shape in self.scene.shapes {
-                        shape.rotate(cells: self.scene.cells)
-                    }
-                    self.scene.updateCells()
+                    self.scene.onTapGesture()
                 }
             
             VStack {
@@ -135,55 +123,12 @@ struct GameView: View {
     
     /// двигает текущую деталь по горизонтали
     private func moveHorizontal(touch: DragGesture.Value) {
-        guard abs(touch.location.x - self.startTouchXPosition) >= 25 else {
-            return
-        }
-        
-        self.startTouchXPosition = touch.startLocation.x
-        for shape in self.scene.shapes {
-            if shape.isLocked {
-                continue
-            }
-            if self.startTouchXPosition - touch.location.x > 0 {
-                shape.moveToLeft(cells: self.scene.cells)
-                scene.updateCells()
-            } else if self.startTouchXPosition - touch.location.x < 0  {
-                shape.moveToRight(cells: self.scene.cells)
-                self.scene.updateCells()
-            }
-        }
-        self.startTouchXPosition = touch.location.x
+        self.scene.moveShapeHorizontal(touch: touch)
     }
     
     /// двигает текущую деталь по вертикали
     private func moveVertical(touch: DragGesture.Value) -> Bool {
-        guard abs(touch.location.y - self.startTouchYPosition) >= 25 else {
-            return false
-        }
-        
-        print(touch.startLocation.y, touch.location.y, touch.velocity.height)
-        self.startTouchYPosition = touch.startLocation.y
-        for shape in self.scene.shapes {
-            if shape.isLocked {
-                continue
-            }
-            guard abs(touch.velocity.height) < 1000 else {
-                guard touch.time.timeIntervalSince1970 - TouchTimeInformation.lastMoveToBottomTime >= TouchTimeInformation.touchTimeDelay else {
-                    return true
-                }
-                TouchTimeInformation.lastMoveToBottomTime = touch.time.timeIntervalSince1970
-                shape.moveToBottom(cells: self.scene.cells)
-                self.startTouchYPosition = 0
-                return true
-            }
-            if touch.location.y - self.startTouchYPosition > 0 {
-                shape.moveDown(cells: self.scene.cells)
-                scene.updateCells()
-            }
-        }
-        self.startTouchYPosition = touch.location.y
-//        print(self.startTouchYPosition)
-        return true
+        self.scene.moveShapeVertical(touch: touch)
     }
     func showLoseView() {
         
