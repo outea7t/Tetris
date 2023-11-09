@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "DFB66BA8-7536-4F3B-82A1-85D7B84BDEEE"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "87A7629F-87C4-463E-B5E7-337DF850B4DC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tetris/Game/GameModel/Tetrominos/Tetromino.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
+            landmarkName = "setSkins(isSkinsSet:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "87A7629F-87C4-463E-B5E7-337DF850B4DC - 9abb8123e71717a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Tetris.Tetromino.setSkins(isSkinsSet: inout Swift.Bool) -&gt; ()"
+                  moduleName = "Tetris"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/outeast/Desktop/Tetris/Tetris/Game/GameModel/Tetrominos/Tetromino.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "258"
+                  endingLineNumber = "258"
+                  offsetFromSymbolStart = "160">
+               </Location>
+               <Location
+                  uuid = "87A7629F-87C4-463E-B5E7-337DF850B4DC - 9abb8123e71717a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Tetris.Tetromino.setSkins(isSkinsSet: inout Swift.Bool) -&gt; ()"
+                  moduleName = "Tetris"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/outeast/Desktop/Tetris/Tetris/Game/GameModel/Tetrominos/Tetromino.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "258"
+                  endingLineNumber = "258"
+                  offsetFromSymbolStart = "168">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C8384D4B-79AF-41AC-ADBE-7F8BEAF9FE50"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tetris/Game/GameModel/GameScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "410"
+            endingLineNumber = "410"
+            landmarkName = "addTetrominoInCells(tetromino:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9E19C794-DFAB-4638-8E8E-9ED4CD9EBAF1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tetris/Game/2D/GameView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "moveVertical(touch:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9E19C794-DFAB-4638-8E8E-9ED4CD9EBAF1 - d0887939ced2e334"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tetris.GameView.moveVertical(touch: SwiftUI.DragGesture.Value) -&gt; Swift.Bool"
+                  moduleName = "Tetris"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/outeast/Desktop/Tetris/Tetris/Game/2D/GameView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
+                  offsetFromSymbolStart = "1468">
+               </Location>
+               <Location
+                  uuid = "9E19C794-DFAB-4638-8E8E-9ED4CD9EBAF1 - d0887939ced2e334"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tetris.GameView.moveVertical(touch: SwiftUI.DragGesture.Value) -&gt; Swift.Bool"
+                  moduleName = "Tetris"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/outeast/Desktop/Tetris/Tetris/Game/2D/GameView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
+                  offsetFromSymbolStart = "1476">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "477E4C7C-312F-49E6-B293-442ADBC0D3C1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tetris/Game/2D/GameModel/GameScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "update(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7299B2BC-6E3B-4924-B6B1-C56278E7B5BC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tetris/Game/2D/GameModel/GameScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "f()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "86835331-9467-422D-99F0-ED8E9187BB4F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tetris/Game/2D/GameModel/GameScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "f()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
