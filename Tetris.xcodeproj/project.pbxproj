@@ -15,6 +15,7 @@
 		2229EB982AF4F90E007CAB88 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229EB972AF4F90E007CAB88 /* HapticManager.swift */; };
 		222EDE902AF26166005882F4 /* UserCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EDE8F2AF26166005882F4 /* UserCustomization.swift */; };
 		22365F8C2AFD579B00270FEE /* NextShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22365F8B2AFD579B00270FEE /* NextShapeView.swift */; };
+		22365F8E2AFE319100270FEE /* AnimatedCerd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22365F8D2AFE319100270FEE /* AnimatedCerd.swift */; };
 		223CD81C2AEA870100A0134A /* I_Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223CD81B2AEA870100A0134A /* I_Shape.swift */; };
 		223CD81E2AEA870D00A0134A /* S_Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223CD81D2AEA870D00A0134A /* S_Shape.swift */; };
 		223CD8202AEA871500A0134A /* Z_Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223CD81F2AEA871500A0134A /* Z_Shape.swift */; };
@@ -50,6 +51,7 @@
 		2229EB972AF4F90E007CAB88 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		222EDE8F2AF26166005882F4 /* UserCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCustomization.swift; sourceTree = "<group>"; };
 		22365F8B2AFD579B00270FEE /* NextShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextShapeView.swift; sourceTree = "<group>"; };
+		22365F8D2AFE319100270FEE /* AnimatedCerd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedCerd.swift; sourceTree = "<group>"; };
 		223CD81B2AEA870100A0134A /* I_Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_Shape.swift; sourceTree = "<group>"; };
 		223CD81D2AEA870D00A0134A /* S_Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S_Shape.swift; sourceTree = "<group>"; };
 		223CD81F2AEA871500A0134A /* Z_Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Z_Shape.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			children = (
 				226E668D2ADFC4FD0084B35D /* GameLogo.swift */,
 				226E66A82ADFE55A0084B35D /* MenuRoundedButton.swift */,
+				22365F8D2AFE319100270FEE /* AnimatedCerd.swift */,
 			);
 			path = MainMenuViews;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				226E66AB2ADFEC300084B35D /* GameScene.swift in Sources */,
 				226E66AD2AE03FAF0084B35D /* GameView.swift in Sources */,
 				223CD8242AEA872700A0134A /* J_Shape.swift in Sources */,
+				22365F8E2AFE319100270FEE /* AnimatedCerd.swift in Sources */,
 				226E668E2ADFC4FD0084B35D /* GameLogo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

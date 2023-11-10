@@ -17,7 +17,7 @@ struct MainMenu: View {
                             height: UIScreen.main.bounds.height)
         scene.scaleMode = .aspectFill
         
-        
+        HapticManager.prepare()
         return scene
     }
     
@@ -39,6 +39,7 @@ struct MainMenu: View {
                 VStack {
                     // MARK: Game Logo
                     GameLogo()
+                        .frame(width: 390, height: 200)
                         .padding(.top, 20)
                     
                     // MARK: Play Button
@@ -46,11 +47,13 @@ struct MainMenu: View {
                         GameView()
                     } label: {
                         EndGameButton(text: "Play", textColor: .white, fontSize: 45)
+                            .frame(height: 100)
                     }
                     .padding(.top, 120)
                     
                     // MARK: Shop Button
                     EndGameButton(text: "Shop", textColor: .white, fontSize: 45)
+                        .frame(height: 100)
                         .padding(.top, 30)
                     
                     // MARK: Statistics Button

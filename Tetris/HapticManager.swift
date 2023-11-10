@@ -15,10 +15,14 @@ struct HapticManager {
     private init() {
         
     }
+    private static var isPrepared = false
     /// это функция подготовки класса к работе с haptic, которые были созданы пользоваетлем
     /// чтобы класс работал корректно, нужно запустить эту функцию в initial View Controller, чтобы
     /// класс настроил все, что ему нужно, до того, как пользователь сожет задействовать пользовательские haptic
     public static func prepare() {
+        guard !self.isPrepared else {
+            return
+        }
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
             return
         }
@@ -49,6 +53,7 @@ struct HapticManager {
             }
             
         }
+        self.isPrepared = true
     }
     public static func loseHaptic() {
         DispatchQueue.main.async {
