@@ -52,11 +52,12 @@ struct GameLogo: View {
                 }
             PixelText(text: "Tetris", fontSize: 65, color: .white)
         }
-        .onAppear {
-            withAnimation(.linear(duration: 4).repeatForever(autoreverses: false)) {
-                rotation = 360
-            }
-        }
+//        .onAppear {
+//            withAnimation(.easeInOut(duration: 4).repeatForever(autoreverses: false)) {
+//                rotation = 360
+//            }
+//        }
+        .frame(width: 350, height: 140)
     }
 }
 

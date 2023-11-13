@@ -17,7 +17,7 @@ struct GameView: View {
         scene.suiViewDelegate = self
         return scene
     }
-    @State var shouldGoToPauseView = false
+    
     @State var startTouchXPosition = CGFloat()
     @State var startTouchYPosition = CGFloat()
     @State var destroyedLines: Int = 0
@@ -29,7 +29,7 @@ struct GameView: View {
         }
     }
     @State var currentLevel: Int = 1
-    
+    @Binding var navigationPaths: [Routes]
     
     var body: some View {
         
@@ -41,7 +41,6 @@ struct GameView: View {
                     // MARK: Drag Gesture
                     DragGesture(coordinateSpace: .global)
                         .onChanged({ touch in
-                            
                             guard !self.scene.isGamePaused else {
                                 return
                             }
@@ -49,7 +48,6 @@ struct GameView: View {
                             if !self.moveVertical(touch: touch) {
                                 self.moveHorizontal(touch: touch)
                             }
-                            
                         })
                     
                 )
@@ -75,7 +73,6 @@ struct GameView: View {
                         .padding(.trailing, 25)
                 }
                 
-                
                 VStack {
                     // MARK: Current Score
                     Text("\(self.currentScore)")
@@ -90,9 +87,6 @@ struct GameView: View {
                 }
                 .padding(.top, 15)
                 
-                
-                
-                
             }
             .frame(maxHeight: .infinity, alignment: .top)
             
@@ -100,19 +94,13 @@ struct GameView: View {
                 // MARK: Pause Button
                 Spacer()
                 Button {
-                    self.shouldGoToPauseView.toggle()
+                    self.navigationPaths.append(.pauseView)
                     self.scene.pauseGame()
                 } label: {
                     Text("||")
                         .font(.custom("04b", size: 35))
                         .foregroundStyle(.white)
-                        .padding(.bottom, 30)
-                        .padding(.trailing, 25)
-                }
-                .fullScreenCover(isPresented: $shouldGoToPauseView) {
-                    print("")
-                } content: {
-                    PauseView(currentScore: currentScore)
+                        .padding(.trailing)
                 }
                 
             }
@@ -121,6 +109,9 @@ struct GameView: View {
         .navigationBarHidden(true)
     }
     
+    func showLoseView() {
+        navigationPaths.append(.loseView)
+    }
     /// двигает текущую деталь по горизонтали
     private func moveHorizontal(touch: DragGesture.Value) {
         self.scene.moveShapeHorizontal(touch: touch)
@@ -130,14 +121,10 @@ struct GameView: View {
     private func moveVertical(touch: DragGesture.Value) -> Bool {
         self.scene.moveShapeVertical(touch: touch)
     }
-    func showLoseView() {
-        
-    }
-    func showPauseView() {
-        
-    }
+    
+    
 }
 
 #Preview {
-    GameView()
+    GameView(navigationPaths: .constant([]))
 }

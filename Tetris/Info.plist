@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Give access to the app to camera for proper work of one</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>PixelFont.TTF</string>

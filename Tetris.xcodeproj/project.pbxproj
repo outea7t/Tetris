@@ -14,8 +14,10 @@
 		2213ED112AE52ED100F15735 /* Tetromino.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2213ED102AE52ED100F15735 /* Tetromino.swift */; };
 		2229EB982AF4F90E007CAB88 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229EB972AF4F90E007CAB88 /* HapticManager.swift */; };
 		222EDE902AF26166005882F4 /* UserCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EDE8F2AF26166005882F4 /* UserCustomization.swift */; };
+		222EFF3B2B02123400C392AE /* ARGameViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EFF3A2B02123400C392AE /* ARGameViewRepresentable.swift */; };
+		222EFF3E2B02134400C392AE /* Cell3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EFF3D2B02134400C392AE /* Cell3D.swift */; };
+		222EFF402B02134A00C392AE /* Frame3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EFF3F2B02134A00C392AE /* Frame3D.swift */; };
 		22365F8C2AFD579B00270FEE /* NextShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22365F8B2AFD579B00270FEE /* NextShapeView.swift */; };
-		22365F8E2AFE319100270FEE /* AnimatedCerd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22365F8D2AFE319100270FEE /* AnimatedCerd.swift */; };
 		223CD81C2AEA870100A0134A /* I_Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223CD81B2AEA870100A0134A /* I_Shape.swift */; };
 		223CD81E2AEA870D00A0134A /* S_Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223CD81D2AEA870D00A0134A /* S_Shape.swift */; };
 		223CD8202AEA871500A0134A /* Z_Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223CD81F2AEA871500A0134A /* Z_Shape.swift */; };
@@ -24,12 +26,14 @@
 		223CD8262AEA873300A0134A /* O_Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223CD8252AEA873300A0134A /* O_Shape.swift */; };
 		223CD8282AEA873B00A0134A /* T_Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223CD8272AEA873B00A0134A /* T_Shape.swift */; };
 		223F693B2AE4823600F71484 /* BackgroundAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F693A2AE4823600F71484 /* BackgroundAnimation.swift */; };
+		2244E90B2B019A260063FF6C /* ARGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244E90A2B019A260063FF6C /* ARGameViewController.swift */; };
 		224548502AE1BBF300A81DE4 /* Сolors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245484F2AE1BBF300A81DE4 /* Сolors.swift */; };
 		22558B482AF7E87800F1B9E6 /* GlowingDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22558B472AF7E87800F1B9E6 /* GlowingDivider.swift */; };
 		22558B4A2AF7E98700F1B9E6 /* EndGameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22558B492AF7E98700F1B9E6 /* EndGameButton.swift */; };
 		22558B4C2AF7F2B000F1B9E6 /* PixelText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22558B4B2AF7F2B000F1B9E6 /* PixelText.swift */; };
 		22558B4E2AF8639500F1B9E6 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22558B4D2AF8639500F1B9E6 /* StatisticsView.swift */; };
 		22558B512AF8654E00F1B9E6 /* UserStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22558B502AF8654E00F1B9E6 /* UserStatistics.swift */; };
+		2269C5A32AFEC6B200E76F0F /* NavigationStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2269C5A22AFEC6B200E76F0F /* NavigationStackManager.swift */; };
 		226E668E2ADFC4FD0084B35D /* GameLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E668D2ADFC4FD0084B35D /* GameLogo.swift */; };
 		226E66A22ADFDA8C0084B35D /* PixelFont.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 226E66A12ADFDA8C0084B35D /* PixelFont.TTF */; };
 		226E66A92ADFE55A0084B35D /* MenuRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E66A82ADFE55A0084B35D /* MenuRoundedButton.swift */; };
@@ -50,8 +54,10 @@
 		2213ED102AE52ED100F15735 /* Tetromino.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tetromino.swift; sourceTree = "<group>"; };
 		2229EB972AF4F90E007CAB88 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		222EDE8F2AF26166005882F4 /* UserCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCustomization.swift; sourceTree = "<group>"; };
+		222EFF3A2B02123400C392AE /* ARGameViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGameViewRepresentable.swift; sourceTree = "<group>"; };
+		222EFF3D2B02134400C392AE /* Cell3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell3D.swift; sourceTree = "<group>"; };
+		222EFF3F2B02134A00C392AE /* Frame3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame3D.swift; sourceTree = "<group>"; };
 		22365F8B2AFD579B00270FEE /* NextShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextShapeView.swift; sourceTree = "<group>"; };
-		22365F8D2AFE319100270FEE /* AnimatedCerd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedCerd.swift; sourceTree = "<group>"; };
 		223CD81B2AEA870100A0134A /* I_Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_Shape.swift; sourceTree = "<group>"; };
 		223CD81D2AEA870D00A0134A /* S_Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S_Shape.swift; sourceTree = "<group>"; };
 		223CD81F2AEA871500A0134A /* Z_Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Z_Shape.swift; sourceTree = "<group>"; };
@@ -60,12 +66,14 @@
 		223CD8252AEA873300A0134A /* O_Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = O_Shape.swift; sourceTree = "<group>"; };
 		223CD8272AEA873B00A0134A /* T_Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T_Shape.swift; sourceTree = "<group>"; };
 		223F693A2AE4823600F71484 /* BackgroundAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAnimation.swift; sourceTree = "<group>"; };
+		2244E90A2B019A260063FF6C /* ARGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGameViewController.swift; sourceTree = "<group>"; };
 		2245484F2AE1BBF300A81DE4 /* Сolors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Сolors.swift"; sourceTree = "<group>"; };
 		22558B472AF7E87800F1B9E6 /* GlowingDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowingDivider.swift; sourceTree = "<group>"; };
 		22558B492AF7E98700F1B9E6 /* EndGameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameButton.swift; sourceTree = "<group>"; };
 		22558B4B2AF7F2B000F1B9E6 /* PixelText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelText.swift; sourceTree = "<group>"; };
 		22558B4D2AF8639500F1B9E6 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		22558B502AF8654E00F1B9E6 /* UserStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatistics.swift; sourceTree = "<group>"; };
+		2269C5A22AFEC6B200E76F0F /* NavigationStackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackManager.swift; sourceTree = "<group>"; };
 		226E668D2ADFC4FD0084B35D /* GameLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogo.swift; sourceTree = "<group>"; };
 		226E66942ADFC6290084B35D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		226E66A12ADFDA8C0084B35D /* PixelFont.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = PixelFont.TTF; sourceTree = "<group>"; };
@@ -110,6 +118,7 @@
 			children = (
 				226E66942ADFC6290084B35D /* Info.plist */,
 				220880662AD708B700B54E58 /* TetrisApp.swift */,
+				2269C5A22AFEC6B200E76F0F /* NavigationStackManager.swift */,
 				2213ED142AE52F2600F15735 /* MainMenu */,
 				2213ED132AE52F0600F15735 /* Game */,
 				222EDE8D2AF26125005882F4 /* Shop */,
@@ -214,6 +223,15 @@
 			path = ShopModel;
 			sourceTree = "<group>";
 		};
+		222EFF3C2B02132F00C392AE /* 3DGameModel */ = {
+			isa = PBXGroup;
+			children = (
+				222EFF3D2B02134400C392AE /* Cell3D.swift */,
+				222EFF3F2B02134A00C392AE /* Frame3D.swift */,
+			);
+			path = 3DGameModel;
+			sourceTree = "<group>";
+		};
 		22558B4F2AF8653F00F1B9E6 /* StatsModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +252,9 @@
 		22558B532AF9113800F1B9E6 /* 3D */ = {
 			isa = PBXGroup;
 			children = (
+				222EFF3C2B02132F00C392AE /* 3DGameModel */,
+				2244E90A2B019A260063FF6C /* ARGameViewController.swift */,
+				222EFF3A2B02123400C392AE /* ARGameViewRepresentable.swift */,
 			);
 			path = 3D;
 			sourceTree = "<group>";
@@ -252,7 +273,6 @@
 			children = (
 				226E668D2ADFC4FD0084B35D /* GameLogo.swift */,
 				226E66A82ADFE55A0084B35D /* MenuRoundedButton.swift */,
-				22365F8D2AFE319100270FEE /* AnimatedCerd.swift */,
 			);
 			path = MainMenuViews;
 			sourceTree = "<group>";
@@ -332,6 +352,7 @@
 				222EDE902AF26166005882F4 /* UserCustomization.swift in Sources */,
 				223CD8262AEA873300A0134A /* O_Shape.swift in Sources */,
 				223CD81C2AEA870100A0134A /* I_Shape.swift in Sources */,
+				2269C5A32AFEC6B200E76F0F /* NavigationStackManager.swift in Sources */,
 				224548502AE1BBF300A81DE4 /* Сolors.swift in Sources */,
 				223F693B2AE4823600F71484 /* BackgroundAnimation.swift in Sources */,
 				22558B4E2AF8639500F1B9E6 /* StatisticsView.swift in Sources */,
@@ -344,18 +365,21 @@
 				220880692AD708B700B54E58 /* MainMenu.swift in Sources */,
 				22558B4A2AF7E98700F1B9E6 /* EndGameButton.swift in Sources */,
 				226E66A92ADFE55A0084B35D /* MenuRoundedButton.swift in Sources */,
+				2244E90B2B019A260063FF6C /* ARGameViewController.swift in Sources */,
 				223CD8282AEA873B00A0134A /* T_Shape.swift in Sources */,
 				22365F8C2AFD579B00270FEE /* NextShapeView.swift in Sources */,
+				222EFF402B02134A00C392AE /* Frame3D.swift in Sources */,
 				220880672AD708B700B54E58 /* TetrisApp.swift in Sources */,
 				229C52B22AEEB42E004FDBAD /* LoseView.swift in Sources */,
 				22558B482AF7E87800F1B9E6 /* GlowingDivider.swift in Sources */,
 				226E66AF2AE059A80084B35D /* Cell.swift in Sources */,
+				222EFF3B2B02123400C392AE /* ARGameViewRepresentable.swift in Sources */,
 				223CD8202AEA871500A0134A /* Z_Shape.swift in Sources */,
 				22558B512AF8654E00F1B9E6 /* UserStatistics.swift in Sources */,
 				226E66AB2ADFEC300084B35D /* GameScene.swift in Sources */,
 				226E66AD2AE03FAF0084B35D /* GameView.swift in Sources */,
 				223CD8242AEA872700A0134A /* J_Shape.swift in Sources */,
-				22365F8E2AFE319100270FEE /* AnimatedCerd.swift in Sources */,
+				222EFF3E2B02134400C392AE /* Cell3D.swift in Sources */,
 				226E668E2ADFC4FD0084B35D /* GameLogo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

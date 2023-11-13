@@ -24,7 +24,6 @@ struct EndGameButton: View {
     
     var body: some View {
         ZStack {
-            
             // MARK: Blurred Capsule
             Capsule()
                 .frame(width: 400, height: 400)
@@ -65,11 +64,11 @@ struct EndGameButton: View {
             PixelText(text: text, fontSize: fontSize, color: textColor)
         }
         // MARK: Rotation Animation
-        .onAppear {
-            withAnimation(.easeInOut(duration: 3).repeatForever(autoreverses: false)) {
-                rotation = 360
-            }
-        }
+//        .onAppear {
+//            withAnimation(.easeInOut(duration: 3).repeatForever(autoreverses: false)) {
+//                rotation = 360
+//            }
+//        }
     }
 }
 

@@ -11,7 +11,7 @@ import SwiftUI
 struct TetrisApp: App {
     var body: some Scene {
         WindowGroup {
-            MainMenu()
+            NavigationStackManager()
         }
     }
 }

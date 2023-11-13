@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct PauseView: View {
-    @Environment(\.presentationMode) var presentationMode
     private var backgroundColor = #colorLiteral(red: 0.007843137255, green: 0, blue: 0.09019607843, alpha: 1)
     
     var currentScore: Int
-    init(currentScore: Int) {
+    
+    @Binding var navigationPaths: [Routes]
+    
+    init(currentScore: Int, navigationPaths: Binding<[Routes]>) {
         self.currentScore = currentScore
+        self._navigationPaths = navigationPaths
     }
     
     var body: some View {
@@ -40,21 +43,32 @@ struct PauseView: View {
                 
                 // MARK: Continue Button
                 Button {
-                    presentationMode.wrappedValue.dismiss()
+                    GameScene.shared.unpauseGame()
+                    self.navigationPaths.removeLast()
                 } label: {
                     EndGameButton(text: "Continue", textColor: .white, fontSize: 40)
+                        .frame(height: 100)
                 }
                     .padding(.bottom, 20)
                 
                 // MARK: Menu Button
-                EndGameButton(text: "Menu", textColor: .white, fontSize: 40)
+                Button {
+                    GameScene.shared.clearCells()
+                    GameScene.shared.unpauseGame()
+                    self.navigationPaths.removeLast()
+                    self.navigationPaths.removeLast()
+                } label: {
+                    EndGameButton(text: "Menu", textColor: .white, fontSize: 40)
+                        .frame(height: 100)
+                }
                 
                 Spacer()
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 #Preview {
-    PauseView(currentScore: 100)
+    PauseView(currentScore: 100, navigationPaths: .constant([]))
 }

@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import SceneKit
+
+class Cell3D {
+    
+}

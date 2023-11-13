@@ -52,10 +52,12 @@ struct LoseView: View {
                 
                 // MARK: Try Again Button
                 EndGameButton(text: "TryAgain", textColor: .white, fontSize: 40)
+                    .frame(height: 100)
                     .padding(.bottom, 20)
                 
                 // MARK: Menu Button
                 EndGameButton(text: "Menu", textColor: .white, fontSize: 40)
+                    .frame(height: 100)
                 Spacer()
             }
         }

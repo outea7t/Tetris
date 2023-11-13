@@ -18,7 +18,6 @@ class Frame {
     
     /// скорость падения тетромино
     private var tetrominoSpeed: Double = 1/1
-    
     var cells = [[Cell]]()
     
     var frameNode: SKShapeNode
@@ -309,6 +308,9 @@ class Frame {
         }
     }
     func addTetrominoInCells(tetromino: Tetromino) {
+        if !self.shapes.isEmpty {
+            self.shapes.removeLast().positions = []
+        }
         for position in tetromino.positions {
             self.cells[position.y][position.x].hasCurrentTetrominoIn = true
             self.cells[position.y][position.x].fillTexture = Tetromino.skins[UserCustomization.currentTetrominoSkinIndex][tetromino
@@ -317,4 +319,18 @@ class Frame {
         self.shapes.append(tetromino)
     }
     
+    func clearCells() {
+        self.shapes = []
+        self.nextTetrominos = []
+        
+        for row in self.cells {
+            for cell in row {
+                cell.isLocked = false
+                cell.hasCurrentTetrominoIn = false
+                cell.fillTexture = nil
+                cell.hasCurrentTetrominoProjectionIn = false
+                cell.fillColor = .clear
+            }
+        }
+    }
 }

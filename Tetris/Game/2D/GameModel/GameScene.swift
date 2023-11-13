@@ -29,6 +29,7 @@ class GameScene: SKScene {
             }
         }
     }
+    
     /// текущий счет игрока
     var currentScore: Int = 0 {
         willSet {
@@ -90,6 +91,12 @@ class GameScene: SKScene {
     
     func pauseGame() {
         self.isGamePaused = true
+    }
+    func unpauseGame() {
+        self.isGamePaused = false
+    }
+    func clearCells() {
+        self.cellFrameNode?.clearCells()
     }
     
     func onTapGesture() {

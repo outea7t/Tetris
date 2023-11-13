@@ -19,7 +19,7 @@ struct StatisticsView: View {
         return scene
     }
     
-    @Environment(\.presentationMode) var presentationMode
+    @Binding var navigationPaths: [Routes]
     
     private let backButtonColor = #colorLiteral(red: 0.4117647059, green: 0.4705882353, blue: 1, alpha: 1)
     var body: some View {
@@ -36,7 +36,7 @@ struct StatisticsView: View {
                 // MARK: Back Button
                 HStack {
                     Button {
-                        presentationMode.wrappedValue.dismiss()
+                        self.navigationPaths.removeLast()
                     } label: {
                         Image("PointerLeft", bundle: nil)
                             .resizable()
@@ -57,49 +57,47 @@ struct StatisticsView: View {
                 GlowingDivider()
                     .padding(.bottom, 70)
                 
-//                VStack(alignment: .leading) {
-                    // MARK: Max Score
-                    PixelText(text: "Max Score:", fontSize: 25, color: .white)
-                        .padding(.bottom, 10)
-                    
-                    PixelText(text: "\(UserStatistics.maxScore)", fontSize: 25, color: .white)
-                        .padding(.bottom, 20)
-//                        .padding(.leading, 30)
-                    
-                    // MARK: Short Divider
-                    GlowingDivider(isShort: true)
-                        .padding(.bottom, 20)
-//                        .padding(.leading, -10)
-                    
-                    // MARK: Buyed Skins Count
-                    PixelText(text: "Buyed Skins", fontSize: 25, color: .white)
-                        .padding(.bottom, 10)
-                    
-                    PixelText(text: "\(UserCustomization.countOfBuyedSkins)", fontSize: 25, color: .white)
-                        .padding(.bottom, 20)
-//                        .padding(.leading, 30)
-                    
-                    // MARK: Short Divider
-                    GlowingDivider(isShort: true)
-                        .padding(.bottom, 20)
-//                        .padding(.leading, -10)
-                    
-                    // MARK: Money Count
-                    PixelText(text: "Money Count", fontSize: 25, color: .white)
-                        .padding(.bottom, 10)
-                    
-                    PixelText(text: "\(UserCustomization.countOfBuyedSkins)", fontSize: 25, color: .white)
-//                        .padding(.leading, 30)
-                    
-//                }
-//                .frame(maxWidth: .infinity, alignment: .leading)
-//                .padding(.leading, 30)
+                //                VStack(alignment: .leading) {
+                // MARK: Max Score
+                PixelText(text: "Max Score:", fontSize: 25, color: .white)
+                    .padding(.bottom, 10)
+                
+                PixelText(text: "\(UserStatistics.maxScore)", fontSize: 25, color: .white)
+                    .padding(.bottom, 20)
+                //                        .padding(.leading, 30)
+                
+                // MARK: Short Divider
+                GlowingDivider(isShort: true)
+                    .padding(.bottom, 20)
+                //                        .padding(.leading, -10)
+                
+                // MARK: Buyed Skins Count
+                PixelText(text: "Buyed Skins", fontSize: 25, color: .white)
+                    .padding(.bottom, 10)
+                
+                PixelText(text: "\(UserCustomization.countOfBuyedSkins)", fontSize: 25, color: .white)
+                    .padding(.bottom, 20)
+                //                        .padding(.leading, 30)
+                
+                // MARK: Short Divider
+                GlowingDivider(isShort: true)
+                    .padding(.bottom, 20)
+                //                        .padding(.leading, -10)
+                
+                // MARK: Money Count
+                PixelText(text: "Money Count", fontSize: 25, color: .white)
+                    .padding(.bottom, 10)
+                
+                PixelText(text: "\(UserCustomization.countOfBuyedSkins)", fontSize: 25, color: .white)
+                //                        .padding(.leading, 30)
+//            }
                 Spacer()
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 #Preview {
-    StatisticsView()
+    StatisticsView(navigationPaths: .constant([Routes]()))
 }

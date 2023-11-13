@@ -24,6 +24,7 @@ class Cell {
             }
         }
     }
+    
     var hasCurrentTetrominoProjectionIn = false {
         willSet {
             if newValue {
@@ -38,6 +39,7 @@ class Cell {
             }
         }
     }
+    
     var isLocked = false
     
     var fillColor = UIColor.clear
