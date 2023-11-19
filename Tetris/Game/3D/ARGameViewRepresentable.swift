@@ -11,11 +11,12 @@ import SwiftUI
 struct ARGameViewControllerRepresentable: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> ARGameViewController {
-        return ARGameViewController()
+        let gameViewController = ARGameViewController()
+        print("Entered makeUIViewController")
+        return gameViewController
     }
 
     func updateUIViewController(_ uiViewController: ARGameViewController, context: Context) {
+        
     }
-    
-    
 }

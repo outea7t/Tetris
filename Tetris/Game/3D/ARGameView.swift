@@ -6,13 +6,17 @@
 //
 
 import SwiftUI
+import ARKit
 
 struct ARGameView: View {
+    @Binding var navigationPaths: [Routes]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ARGameViewControllerRepresentable()
+            .ignoresSafeArea()
     }
 }
 
 #Preview {
-    ARGameView()
+    ARGameView(navigationPaths: Binding.constant([]))
 }

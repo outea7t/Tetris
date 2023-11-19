@@ -14,7 +14,7 @@ enum Routes {
     case gameView
     case pauseView
     case loseView
-    case gameView3D
+    case arGameView
 }
 
 // Навигация в игре будет реализована через Navigation Stack
@@ -47,15 +47,11 @@ struct NavigationStackManager: View {
                             PauseView(currentScore: 100, navigationPaths: $navigationPaths)
                         case .loseView:
                             LoseView(gainedScore: 100, gainedMoney: 100)
-                        case .gameView3D:
-                            GameView(navigationPaths: $navigationPaths)
-//                            ARGameView()
+                        case .arGameView:
+                            ARGameView(navigationPaths: $navigationPaths)
                             
                         }
-                    
                     }
-//                    .ignoresSafeArea()
-                
             }
         }
     }

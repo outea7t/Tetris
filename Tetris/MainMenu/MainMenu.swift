@@ -77,11 +77,14 @@ struct MainMenu: View {
                 }
                 
                 HStack {
-                    // MARK: TO 3D Button
-                   MenuRoundedButton(foregroundColor: Color(foreground3DButtonColor), backgroundColor: Color(background3DButtonColor), iconName: "move.3d")
-                       .padding(.top, 15)
-                       .padding(.leading, 20)
-                    
+                    Button {
+                        self.navigationPaths.append(.arGameView)
+                    } label: {
+                        // MARK: TO 3D Button
+                        MenuRoundedButton(foregroundColor: Color(foreground3DButtonColor), backgroundColor: Color(background3DButtonColor), iconName: "move.3d")
+                            .padding(.top, 15)
+                            .padding(.leading, 20)
+                    }
                     Spacer()
                     
                     // MARK: Settings Button

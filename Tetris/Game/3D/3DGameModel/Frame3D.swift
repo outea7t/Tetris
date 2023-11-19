@@ -27,6 +27,16 @@ class Frame3D {
     /// константа для расстояния между ячейками
     private let cellSpaceConstant = SCNVector3()
     
+    /// скорость падения тетромино
+    private var tetrominoSpeed: Double = 1/1
+    /// фигуры, которые выпадали игроку
+    var shapes = [Tetromino]()
+    /// следующие фигуры
+    var nextTetrominos = [Tetromino]()
+    /// задержка, перед закреплением детали
+    /// чтобы пользователь мог двигать ее в последний момент
+    private var isDelaying = false
+    
     init() {
         self.node = SCNNode()
         
@@ -49,6 +59,4 @@ class Frame3D {
             self.cells.append(row)
         }
     }
-    
-    
 }

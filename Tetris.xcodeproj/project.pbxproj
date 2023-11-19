@@ -12,6 +12,7 @@
 		2208806B2AD708B700B54E58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2208806A2AD708B700B54E58 /* Assets.xcassets */; };
 		2208806E2AD708B700B54E58 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2208806D2AD708B700B54E58 /* Preview Assets.xcassets */; };
 		2213ED112AE52ED100F15735 /* Tetromino.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2213ED102AE52ED100F15735 /* Tetromino.swift */; };
+		221C1D242B04B88300C015A4 /* ARGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C1D232B04B88300C015A4 /* ARGameView.swift */; };
 		2229EB982AF4F90E007CAB88 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229EB972AF4F90E007CAB88 /* HapticManager.swift */; };
 		222EDE902AF26166005882F4 /* UserCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EDE8F2AF26166005882F4 /* UserCustomization.swift */; };
 		222EFF3B2B02123400C392AE /* ARGameViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EFF3A2B02123400C392AE /* ARGameViewRepresentable.swift */; };
@@ -43,6 +44,7 @@
 		229C52B02AEEB426004FDBAD /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C52AF2AEEB426004FDBAD /* PauseView.swift */; };
 		229C52B22AEEB42E004FDBAD /* LoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C52B12AEEB42E004FDBAD /* LoseView.swift */; };
 		22C28AA92AFC31AC002A753A /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C28AA82AFC31AC002A753A /* Frame.swift */; };
+		22EE13F52B093A3100EC7C6B /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE13F42B093A3100EC7C6B /* Plane.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,7 @@
 		2208806A2AD708B700B54E58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2208806D2AD708B700B54E58 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2213ED102AE52ED100F15735 /* Tetromino.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tetromino.swift; sourceTree = "<group>"; };
+		221C1D232B04B88300C015A4 /* ARGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGameView.swift; sourceTree = "<group>"; };
 		2229EB972AF4F90E007CAB88 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		222EDE8F2AF26166005882F4 /* UserCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCustomization.swift; sourceTree = "<group>"; };
 		222EFF3A2B02123400C392AE /* ARGameViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGameViewRepresentable.swift; sourceTree = "<group>"; };
@@ -84,6 +87,7 @@
 		229C52AF2AEEB426004FDBAD /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
 		229C52B12AEEB42E004FDBAD /* LoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseView.swift; sourceTree = "<group>"; };
 		22C28AA82AFC31AC002A753A /* Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame.swift; sourceTree = "<group>"; };
+		22EE13F42B093A3100EC7C6B /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +232,7 @@
 			children = (
 				222EFF3D2B02134400C392AE /* Cell3D.swift */,
 				222EFF3F2B02134A00C392AE /* Frame3D.swift */,
+				22EE13F42B093A3100EC7C6B /* Plane.swift */,
 			);
 			path = 3DGameModel;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 				222EFF3C2B02132F00C392AE /* 3DGameModel */,
 				2244E90A2B019A260063FF6C /* ARGameViewController.swift */,
 				222EFF3A2B02123400C392AE /* ARGameViewRepresentable.swift */,
+				221C1D232B04B88300C015A4 /* ARGameView.swift */,
 			);
 			path = 3D;
 			sourceTree = "<group>";
@@ -351,6 +357,7 @@
 				22C28AA92AFC31AC002A753A /* Frame.swift in Sources */,
 				222EDE902AF26166005882F4 /* UserCustomization.swift in Sources */,
 				223CD8262AEA873300A0134A /* O_Shape.swift in Sources */,
+				221C1D242B04B88300C015A4 /* ARGameView.swift in Sources */,
 				223CD81C2AEA870100A0134A /* I_Shape.swift in Sources */,
 				2269C5A32AFEC6B200E76F0F /* NavigationStackManager.swift in Sources */,
 				224548502AE1BBF300A81DE4 /* Сolors.swift in Sources */,
@@ -374,6 +381,7 @@
 				22558B482AF7E87800F1B9E6 /* GlowingDivider.swift in Sources */,
 				226E66AF2AE059A80084B35D /* Cell.swift in Sources */,
 				222EFF3B2B02123400C392AE /* ARGameViewRepresentable.swift in Sources */,
+				22EE13F52B093A3100EC7C6B /* Plane.swift in Sources */,
 				223CD8202AEA871500A0134A /* Z_Shape.swift in Sources */,
 				22558B512AF8654E00F1B9E6 /* UserStatistics.swift in Sources */,
 				226E66AB2ADFEC300084B35D /* GameScene.swift in Sources */,
