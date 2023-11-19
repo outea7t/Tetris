@@ -10,7 +10,7 @@ import ARKit
 import RealityKit
 
 
-class ARGameViewController: UIViewController, ARSCNViewDelegate {
+class ARGameViewController: UIViewController {
     
     /// view, которое отвечает за отрисовку объектов дополненной реальности
     let arscnView = ARSCNView()
@@ -18,6 +18,8 @@ class ARGameViewController: UIViewController, ARSCNViewDelegate {
     let detectedPlane = Plane()
     /// сцена, в которой располагаются все игровые объекты
     let gameScene = SCNScene()
+    /// рамка с ячейками
+    let frame = Frame3D()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,11 @@ class ARGameViewController: UIViewController, ARSCNViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.updateConfituration()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.frame.isPositionPinned = true
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -113,6 +120,17 @@ class ARGameViewController: UIViewController, ARSCNViewDelegate {
         
         NSLayoutConstraint.activate(constraints)
     }
+    private func configureFrame() {
+        guard let detectedPlaneNode = self.detectedPlane.detectedPlaneNode else {
+            return
+        }
+        self.frame.addFrame(to: self.gameScene.rootNode, in: detectedPlaneNode.worldPosition)
+    }
+    
+}
+
+// обнаружение плоскости
+extension ARGameViewController: ARSCNViewDelegate {
     // функция, которая обнаруживает плоскость
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard let planeAnchor = anchor as? ARPlaneAnchor else {
@@ -126,15 +144,55 @@ class ARGameViewController: UIViewController, ARSCNViewDelegate {
         guard let planeAnchor = anchor as? ARPlaneAnchor else {
             return
         }
-        
         self.detectedPlane.updatePlane(planeAnchor: planeAnchor)
+        
+        // добавляем рамку с игровыми объектами, если она еще не добавлена
+        if self.detectedPlane.wantSetPosition && !self.detectedPlane.wantDetectPlane {
+            let waitAction = SCNAction.wait(duration: 2.0)
+            self.gameScene.rootNode.runAction(waitAction) {
+                self.configureFrame()
+                self.detectedPlane.wantSetPosition = false
+                HapticManager.collisionVibrate(with: .medium, 1.0)
+            }
+            
+        }
+        // если позиция рамки не закреплена, то двигаем ее
+        // в соответствие с движением телефона
+        guard !self.frame.isPositionPinned else {
+            return
+        }
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let arscnView = self?.arscnView,
+                  let frame = self?.frame
+            else {
+                return
+            }
+            
+            let raycast = arscnView.raycastQuery(from: arscnView.center, allowing: .existingPlaneGeometry, alignment: .horizontal)
+            
+            guard let raycast = raycast else {
+                return
+            }
+            
+            let results = arscnView.session.raycast(raycast)
+            
+            guard let result = results.first else {
+                return
+            }
+            
+            let hitPosition = result.worldTransform.columns.3
+            let desirablePosition = SCNVector3(hitPosition.x,
+                                               hitPosition.y + frame.frameBottomVolume.y,
+                                               hitPosition.z
+            )
+            let moveAction = SCNAction.move(to: desirablePosition, duration: 0.25)
+            
+            frame.node.runAction(moveAction)
+        }
     }
+    
 }
-
-// обнаружение плоскости
-//extension ARGameViewController: ARSCNViewDelegate {
-//
-//}
 
 // обработка столкновений
 extension ARGameViewController: SCNPhysicsContactDelegate {
