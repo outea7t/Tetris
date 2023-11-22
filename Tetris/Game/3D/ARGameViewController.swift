@@ -9,9 +9,16 @@ import SwiftUI
 import ARKit
 import RealityKit
 
-
+fileprivate class TouchTimeInformation {
+    /// задержка после мгновенного спуска фигуры
+    static var touchTimeDelay: TimeInterval = 0.3
+    /// время последнего мгновенного спуска фигуры
+    static var lastMoveToBottomTime: TimeInterval = 0.0
+}
 class ARGameViewController: UIViewController {
+    static var shared = ARGameViewController()
     
+    var suiDelegate: ARGameView?
     /// view, которое отвечает за отрисовку объектов дополненной реальности
     let arscnView = ARSCNView()
     /// обнаруженная плоскость
@@ -21,10 +28,43 @@ class ARGameViewController: UIViewController {
     /// рамка с ячейками
     let frame = Frame3D()
     
+    var isGamePaused = false
+    
+    var destroyedLines: Int = 0 {
+        willSet {
+            if let suiDelegate = self.suiDelegate {
+                suiDelegate.destroyedLines = newValue
+            }
+        }
+    }
+    var currentScore: Int = 0 {
+        willSet {
+            if let suiDelegate = self.suiDelegate {
+                suiDelegate.currentScore = newValue
+            }
+        }
+    }
+    var currentLevel: Int = 0 {
+        willSet {
+            if let suiDelegate = self.suiDelegate {
+                suiDelegate.currentLevel = newValue
+            }
+        }
+    }
+    
+    private var startTouchYPosition = CGFloat()
+    private var startTouchXPosition = CGFloat()
+    
+    var isDelaying = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureScene()
         self.configureARSCNView()
+        self.frame.addFirstThreeTetrominos()
+        
+        
+        self.frame.node.eulerAngles.y = Float.pi
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -37,9 +77,13 @@ class ARGameViewController: UIViewController {
         self.updateConfituration()
     }
     
+//    override func update
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        self.frame.isPositionPinned = true
+        if !self.frame.isPositionPinned {
+            self.frame.isPositionPinned = true
+            self.detectedPlane.setOpacityToShadowOnly()
+        }
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -54,6 +98,88 @@ class ARGameViewController: UIViewController {
         return []
     }
     
+    func pauseGame() {
+        
+    }
+    
+    func unpauseGame() {
+        
+    }
+    
+    func clearCells() {
+        
+    }
+    func changeTetrominoInNextView(type: TetrominoType) {
+        
+    }
+    func moveHorizontal(touch: DragGesture.Value) -> Bool {
+        guard !self.isGamePaused && self.frame.isPositionPinned else {
+            return false
+        }
+        guard abs(touch.location.y - self.startTouchYPosition) >= 25 else {
+            return false
+        }
+        
+        self.startTouchYPosition = touch.startLocation.y
+        for shape in self.frame.shapes {
+            if shape.isLocked {
+                continue
+            }
+            guard abs(touch.velocity.height) < 1000 else {
+                guard touch.time.timeIntervalSince1970 - TouchTimeInformation.lastMoveToBottomTime >= TouchTimeInformation.touchTimeDelay else {
+                    return true
+                }
+                TouchTimeInformation.lastMoveToBottomTime = touch.time.timeIntervalSince1970
+//                shape.moveToBottom(frame: self.frame,
+                self.startTouchYPosition = 0
+                return true
+            }
+            if touch.location.y - self.startTouchYPosition > 0 {
+                shape.moveDown(cells: frame.cells)
+                frame.updateCells()
+            }
+        }
+        self.startTouchYPosition = touch.location.y
+        return true
+    }
+    
+    func moveVertical(touch: DragGesture.Value) {
+        guard !self.isGamePaused && self.frame.isPositionPinned else {
+            return
+        }
+        guard abs(touch.location.x - self.startTouchXPosition) >= 25 else {
+            return
+        }
+        
+        self.startTouchXPosition = touch.startLocation.x
+        for shape in self.frame.shapes {
+            if shape.isLocked {
+                continue
+            }
+            if self.startTouchXPosition - touch.location.x > 0 {
+                shape.moveToLeft(cells: self.frame.cells)
+                self.frame.updateCells()
+            } else if self.startTouchXPosition - touch.location.x < 0  {
+                shape.moveToRight(cells: self.frame.cells)
+                self.frame.updateCells()
+            }
+        }
+        self.startTouchXPosition = touch.location.x
+    }
+    
+    func onTapGesture() {
+        guard !self.isGamePaused && self.frame.isPositionPinned else {
+            return
+        }
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        guard !self.isGamePaused && self.frame.isPositionPinned else {
+            return
+        }
+        
+        self.frame.update(time, in: self)
+    }
     private func updateConfituration() {
         let configuration = ARWorldTrackingConfiguration()
         
@@ -96,7 +222,7 @@ class ARGameViewController: UIViewController {
             .showPhysicsShapes
         ]
         // делегат для работы функций контакта
-        self.arscnView.scene.physicsWorld.contactDelegate = self
+//        self.arscnView.scene.physicsWorld.contactDelegate = self
         // устанавливаем предпочтительное количество кадров в секунду у view
         self.arscnView.preferredFramesPerSecond = 60
         self.arscnView.rendersMotionBlur = true
@@ -127,6 +253,7 @@ class ARGameViewController: UIViewController {
         self.frame.addFrame(to: self.gameScene.rootNode, in: detectedPlaneNode.worldPosition)
     }
     
+    
 }
 
 // обнаружение плоскости
@@ -147,6 +274,7 @@ extension ARGameViewController: ARSCNViewDelegate {
         self.detectedPlane.updatePlane(planeAnchor: planeAnchor)
         
         // добавляем рамку с игровыми объектами, если она еще не добавлена
+        
         if self.detectedPlane.wantSetPosition && !self.detectedPlane.wantDetectPlane {
             let waitAction = SCNAction.wait(duration: 2.0)
             self.gameScene.rootNode.runAction(waitAction) {
@@ -154,8 +282,8 @@ extension ARGameViewController: ARSCNViewDelegate {
                 self.detectedPlane.wantSetPosition = false
                 HapticManager.collisionVibrate(with: .medium, 1.0)
             }
-            
         }
+        
         // если позиция рамки не закреплена, то двигаем ее
         // в соответствие с движением телефона
         guard !self.frame.isPositionPinned else {
@@ -187,14 +315,12 @@ extension ARGameViewController: ARSCNViewDelegate {
                                                hitPosition.z
             )
             let moveAction = SCNAction.move(to: desirablePosition, duration: 0.25)
-            
             frame.node.runAction(moveAction)
         }
     }
     
 }
 
-// обработка столкновений
 extension ARGameViewController: SCNPhysicsContactDelegate {
     
 }

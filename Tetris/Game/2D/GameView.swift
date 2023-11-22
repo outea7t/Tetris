@@ -51,7 +51,7 @@ struct GameView: View {
                         })
                     
                 )
-            // MARK: OnTap Gesture
+                // MARK: OnTap Gesture
                 .onTapGesture {
                     self.scene.onTapGesture()
                 }
@@ -121,8 +121,6 @@ struct GameView: View {
     private func moveVertical(touch: DragGesture.Value) -> Bool {
         self.scene.moveShapeVertical(touch: touch)
     }
-    
-    
 }
 
 #Preview {

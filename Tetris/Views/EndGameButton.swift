@@ -26,7 +26,7 @@ struct EndGameButton: View {
         ZStack {
             // MARK: Blurred Capsule
             Capsule()
-                .frame(width: 400, height: 400)
+                .frame(width: 400, height: 160)
                 .foregroundStyle(LinearGradient(colors: strokeGradientColors,
                                                 startPoint: .top,
                                                 endPoint: .bottom
@@ -48,7 +48,7 @@ struct EndGameButton: View {
             
             // MARK: Stroke Capsule
             RoundedRectangle(cornerRadius: 0)
-                .frame(width: 400, height: 400)
+                .frame(width: 330, height: 110)
                 .foregroundStyle(LinearGradient(colors: strokeGradientColors,
                                                 startPoint: .top,
                                                 endPoint: .bottom

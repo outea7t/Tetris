@@ -18,7 +18,7 @@ class Frame {
     
     /// скорость падения тетромино
     private var tetrominoSpeed: Double = 1/1
-    var cells = [[Cell]]()
+    var cells = [[Cell2D]]()
     
     var frameNode: SKShapeNode
     
@@ -53,7 +53,7 @@ class Frame {
         // вычисление позиции определенной ячейки
         // i - вертикаль, j - горизонталь
         for i in 0...19 {
-            var rowOfCells = [Cell]()
+            var rowOfCells = [Cell2D]()
             for j in 0...9 {
                 // сначала прибавляем cellOffset (чтобы рамка для ячеек не пересекалась с ячейками)
                 // также добавляем небольшое расстояние(spaceConstant) между самими ячейками для лучшего вида
@@ -61,7 +61,7 @@ class Frame {
                 let cellPosition = CGPoint(x: self.cellOffset.x + oneTenthOfWidth*0.5 + oneTenthOfWidth * CGFloat(j) + self.spaceConstant.x * CGFloat(j) - frameNode.frame.width/2.0,
                                            y: self.cellOffset.y + oneTenthOfWidth*0.5 + oneTenthOfWidth * CGFloat(i) + self.spaceConstant.y * CGFloat(i) - frameNode.frame.height/2.0)
                 
-                let cell = Cell(frameSize: cellFrameSize, position: cellPosition)
+                let cell = Cell2D(frameSize: cellFrameSize, position: cellPosition)
                 
                 frameNode.addChild(cell.node)
                 rowOfCells.append(cell)

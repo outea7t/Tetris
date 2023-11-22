@@ -9,10 +9,22 @@ import Foundation
 import SwiftUI
 
 struct ARGameViewControllerRepresentable: UIViewControllerRepresentable {
+    static var shared = ARGameViewControllerRepresentable()
+    /// двигаем текущую фигуру по горизонтали
+    func moveHorizontal(touch: DragGesture.Value) {
+        ARGameViewController.shared.moveVertical(touch: touch)
+    }
     
+    /// двигаем текущую фигуру по вертикали
+    func moveVertical(touch: DragGesture.Value) {
+        ARGameViewController.shared.moveVertical(touch: touch)
+    }
+    
+    func onTapGesture() {
+        ARGameViewController.shared.onTapGesture()
+    }
     func makeUIViewController(context: Context) -> ARGameViewController {
         let gameViewController = ARGameViewController()
-        print("Entered makeUIViewController")
         return gameViewController
     }
 

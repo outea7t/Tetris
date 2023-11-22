@@ -85,4 +85,10 @@ class Plane {
             self.planeAnchors.append(planeAnchor)
         }
     }
+    
+    func setOpacityToShadowOnly() {
+        let newPlaneMaterial = SCNMaterial()
+        newPlaneMaterial.lightingModel = .shadowOnly
+        self.detectedPlaneNode?.geometry?.materials = [newPlaneMaterial]
+    }
 }

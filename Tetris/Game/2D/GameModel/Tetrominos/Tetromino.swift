@@ -60,7 +60,7 @@ class Tetromino {
     var lastTime: TimeInterval = 0
     
     var projectionPositions = [Position]()
-    func moveToBottom(frame: Frame, gameScene: GameScene) {
+    func moveToBottom(frame: Frame, gameScene: GameScene? = nil, arGameViewController: ARGameViewController? = nil) {
         guard !self.isLocked else {
             return
         }
@@ -73,7 +73,11 @@ class Tetromino {
         
         self.positions = destinationPositions
         
-        frame.moveShapeToBottom(gameScene: gameScene)
+        if let gameScene = gameScene {
+            frame.moveShapeToBottom(gameScene: gameScene)
+        } else if let arGameViewController = arGameViewController {
+            ARGameViewController.shared.frame.moveShapeToBottom(arGameViewController: arGameViewController)
+        }
     }
     /// двигает фигуру вниз
     func moveDown(cells: [[Cell]]) {

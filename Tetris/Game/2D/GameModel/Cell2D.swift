@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class Cell {
+class Cell2D: Cell {
     var frameSize: CGSize
     var calculatedCellSize: CGSize
     var node: SKShapeNode

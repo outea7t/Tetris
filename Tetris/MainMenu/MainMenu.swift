@@ -42,16 +42,17 @@ struct MainMenu: View {
                 GameLogo()
                     .frame(width: 350, height: 140)
                         .padding(.top, 20)
-                        
-                        
-//                Spacer()
+
+                Spacer()
+                
                 // MARK: Play Button
                 Button {
                     navigationPaths.append(.gameView)
                 } label: {
                     EndGameButton(text: "Play", textColor: .white, fontSize: 45)
                         .frame(width: 311, height: 86)
-                        .padding(.top, 120)
+//                        .padding(.top, 120)
+                        .background(.red)
                         
                 }
 //                .background(.red)

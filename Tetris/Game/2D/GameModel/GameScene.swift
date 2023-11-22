@@ -119,7 +119,7 @@ class GameScene: SKScene {
         guard let cellFrameNode = self.cellFrameNode else {
             return false
         }
-        print(touch.startLocation.y, touch.location.y, touch.velocity.height)
+        
         self.startTouchYPosition = touch.startLocation.y
         for shape in cellFrameNode.shapes {
             if shape.isLocked {
