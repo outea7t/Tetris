@@ -24,6 +24,8 @@ struct ARGameView: View {
             return UserStatistics.maxScore
         }
     }
+    
+    
     var body: some View {
         ZStack {
             arGameViewController
@@ -72,20 +74,27 @@ struct ARGameView: View {
                 // MARK: Pause Button
                 HStack {
                     Spacer()
-                    PixelText(text: "||", fontSize: 50, color: .white)
-                        .padding(.trailing, 40)
-                        .padding(.bottom, 40)
+                    Button {
+                        self.showPauseView()
+                    } label: {
+                        PixelText(text: "||", fontSize: 50, color: .white)
+                            .padding(.trailing, 40)
+                            .padding(.bottom, 40)
+                    }
                 }
             }
         }
         .navigationBarBackButtonHidden(true)
     }
-        
+    
+    func showPauseView() {
+        self.navigationPaths.append(.pauseView)
+    }
     private func moveHorizontal(touch: DragGesture.Value) {
-        
+        self.arGameViewController.moveHorizontal(touch: touch)
     }
     private func moveVertical(touch: DragGesture.Value) -> Bool {
-        return false
+        return self.arGameViewController.moveVertical(touch: touch)
     }
 }
 

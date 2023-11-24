@@ -29,6 +29,8 @@
 		223F693B2AE4823600F71484 /* BackgroundAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F693A2AE4823600F71484 /* BackgroundAnimation.swift */; };
 		2244E90B2B019A260063FF6C /* ARGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244E90A2B019A260063FF6C /* ARGameViewController.swift */; };
 		224548502AE1BBF300A81DE4 /* Сolors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245484F2AE1BBF300A81DE4 /* Сolors.swift */; };
+		2251C16B2B11213500514B8B /* ARPauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251C16A2B11213500514B8B /* ARPauseView.swift */; };
+		2251C16D2B11213D00514B8B /* ARLoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251C16C2B11213D00514B8B /* ARLoseView.swift */; };
 		22558B482AF7E87800F1B9E6 /* GlowingDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22558B472AF7E87800F1B9E6 /* GlowingDivider.swift */; };
 		22558B4A2AF7E98700F1B9E6 /* EndGameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22558B492AF7E98700F1B9E6 /* EndGameButton.swift */; };
 		22558B4C2AF7F2B000F1B9E6 /* PixelText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22558B4B2AF7F2B000F1B9E6 /* PixelText.swift */; };
@@ -73,6 +75,8 @@
 		223F693A2AE4823600F71484 /* BackgroundAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAnimation.swift; sourceTree = "<group>"; };
 		2244E90A2B019A260063FF6C /* ARGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGameViewController.swift; sourceTree = "<group>"; };
 		2245484F2AE1BBF300A81DE4 /* Сolors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Сolors.swift"; sourceTree = "<group>"; };
+		2251C16A2B11213500514B8B /* ARPauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARPauseView.swift; sourceTree = "<group>"; };
+		2251C16C2B11213D00514B8B /* ARLoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARLoseView.swift; sourceTree = "<group>"; };
 		22558B472AF7E87800F1B9E6 /* GlowingDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowingDivider.swift; sourceTree = "<group>"; };
 		22558B492AF7E98700F1B9E6 /* EndGameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameButton.swift; sourceTree = "<group>"; };
 		22558B4B2AF7F2B000F1B9E6 /* PixelText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelText.swift; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 				22558B542AF9163600F1B9E6 /* 2D */,
 				22558B532AF9113800F1B9E6 /* 3D */,
 				2229EB992AF4FDE8007CAB88 /* InGameLogicViews */,
+				2213ED122AE52ED500F15735 /* Tetrominos */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -192,7 +197,6 @@
 				22365F8B2AFD579B00270FEE /* NextShapeView.swift */,
 				22C28AA82AFC31AC002A753A /* Frame.swift */,
 				226E66AE2AE059A80084B35D /* Cell2D.swift */,
-				2213ED122AE52ED500F15735 /* Tetrominos */,
 			);
 			path = GameModel;
 			sourceTree = "<group>";
@@ -243,6 +247,15 @@
 			path = 3DGameModel;
 			sourceTree = "<group>";
 		};
+		2251C1692B11212500514B8B /* InGameLogicViews */ = {
+			isa = PBXGroup;
+			children = (
+				2251C16A2B11213500514B8B /* ARPauseView.swift */,
+				2251C16C2B11213D00514B8B /* ARLoseView.swift */,
+			);
+			path = InGameLogicViews;
+			sourceTree = "<group>";
+		};
 		22558B4F2AF8653F00F1B9E6 /* StatsModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +280,7 @@
 				2244E90A2B019A260063FF6C /* ARGameViewController.swift */,
 				222EFF3A2B02123400C392AE /* ARGameViewRepresentable.swift */,
 				221C1D232B04B88300C015A4 /* ARGameView.swift */,
+				2251C1692B11212500514B8B /* InGameLogicViews */,
 			);
 			path = 3D;
 			sourceTree = "<group>";
@@ -362,6 +376,7 @@
 			files = (
 				22C28AA92AFC31AC002A753A /* Frame.swift in Sources */,
 				222EDE902AF26166005882F4 /* UserCustomization.swift in Sources */,
+				2251C16D2B11213D00514B8B /* ARLoseView.swift in Sources */,
 				223CD8262AEA873300A0134A /* O_Shape.swift in Sources */,
 				221C1D242B04B88300C015A4 /* ARGameView.swift in Sources */,
 				223CD81C2AEA870100A0134A /* I_Shape.swift in Sources */,
@@ -396,6 +411,7 @@
 				226E66AD2AE03FAF0084B35D /* GameView.swift in Sources */,
 				223CD8242AEA872700A0134A /* J_Shape.swift in Sources */,
 				222EFF3E2B02134400C392AE /* Cell3D.swift in Sources */,
+				2251C16B2B11213500514B8B /* ARPauseView.swift in Sources */,
 				226E668E2ADFC4FD0084B35D /* GameLogo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

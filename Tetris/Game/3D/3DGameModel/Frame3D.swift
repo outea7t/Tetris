@@ -26,7 +26,11 @@ class Frame3D {
     /// закреплена ли позиция рамки
     /// При обнаружении плоскости пользователь может передвигать рамку, двигая телефон
     /// когда он нажмет на экран, то рамка установится и переменная будет равна true
-    var isPositionPinned = false
+    var isPositionPinned = false {
+        willSet {
+            print(newValue, " FUCK ")
+        }
+    }
     
     /// для логики создания рамки
     var wantSetPosition = false
@@ -90,12 +94,12 @@ class Frame3D {
                 // также добавляем небольшое расстояние(spaceConstant) между самими ячейками для лучшего вида
                 // в конце отнимаем половину соотв. размера frameNode из за ее anchorPoint
                 
-                let firstPart: Float = self.cellOffset.x + oneTenthOfWidth*0.5 + oneTenthOfWidth * Float(j)
-                let x = firstPart + self.spaceConstant.x * Float(j) - frameBottomVolume.x/1.5
+                let firstPart: Float = self.cellOffset.x - oneTenthOfWidth*0.5 - oneTenthOfWidth * Float(j)
+                let x = firstPart - self.spaceConstant.x * Float(j) + frameBottomVolume.x/1.8
                 
                 let cellPosition = SCNVector3(x: x,
                                               y: frameSize.y,
-                                              z: self.cellOffset.y + oneTenthOfWidth*0.5 + oneTenthOfWidth * Float(i) + self.spaceConstant.y * Float(i) - frameBottomVolume.z/1.55
+                                              z: self.cellOffset.y - oneTenthOfWidth*0.5 - oneTenthOfWidth * Float(i) - self.spaceConstant.y * Float(i) + frameBottomVolume.z/1.7
                                                 )
                 
                 let cell = Cell3D(frameVolume: self.frameBottomVolume, position: cellPosition)

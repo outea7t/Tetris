@@ -9,6 +9,7 @@ import Foundation
 import SceneKit
 
 class Cell3D: Cell {
+    let mutex = NSLock()
     let node = SCNNode()
     var calculatedCellVolume = SCNVector3()
     
@@ -39,11 +40,24 @@ class Cell3D: Cell {
         }
     }
     
-    var isLocked = false
+    var isLocked = false {
+        willSet {
+            if newValue {
+                fillColor = .red
+            } else {
+                fillColor = .clear
+            }
+        }
+        
+    }
     
     var fillColor: UIColor = .clear {
         willSet {
-            var material = SCNMaterial()
+            mutex.lock()
+            defer {
+                mutex.unlock()
+            }
+            let material = SCNMaterial()
             if newValue == .clear {
                 material.diffuse.contents = #colorLiteral(red: 0.2851957083, green: 0.2851957083, blue: 0.2851957083, alpha: 1)
             } else {

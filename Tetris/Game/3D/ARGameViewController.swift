@@ -64,7 +64,7 @@ class ARGameViewController: UIViewController {
         self.frame.addFirstThreeTetrominos()
         
         
-        self.frame.node.eulerAngles.y = Float.pi
+//        self.frame.node.eulerAngles.y = Float.pi
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -79,6 +79,9 @@ class ARGameViewController: UIViewController {
     
 //    override func update
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        withUnsafePointer(to: self.frame) { pointer in
+            print("Memory address of a frame: \(pointer)")
+        }
         super.touchesBegan(touches, with: event)
         if !self.frame.isPositionPinned {
             self.frame.isPositionPinned = true
@@ -99,11 +102,10 @@ class ARGameViewController: UIViewController {
     }
     
     func pauseGame() {
-        
+        self.isGamePaused = true
     }
-    
     func unpauseGame() {
-        
+        self.isGamePaused = false
     }
     
     func clearCells() {
@@ -112,7 +114,8 @@ class ARGameViewController: UIViewController {
     func changeTetrominoInNextView(type: TetrominoType) {
         
     }
-    func moveHorizontal(touch: DragGesture.Value) -> Bool {
+    func moveVertical(touch: DragGesture.Value) -> Bool {
+       
         guard !self.isGamePaused && self.frame.isPositionPinned else {
             return false
         }
@@ -143,7 +146,10 @@ class ARGameViewController: UIViewController {
         return true
     }
     
-    func moveVertical(touch: DragGesture.Value) {
+    func moveHorizontal(touch: DragGesture.Value) {
+        withUnsafePointer(to: self.frame) { pointer in
+            print("Memory address of a frame: \(pointer)")
+        }
         guard !self.isGamePaused && self.frame.isPositionPinned else {
             return
         }
@@ -157,10 +163,10 @@ class ARGameViewController: UIViewController {
                 continue
             }
             if self.startTouchXPosition - touch.location.x > 0 {
-                shape.moveToLeft(cells: self.frame.cells)
+                shape.moveToRight(cells: self.frame.cells)
                 self.frame.updateCells()
             } else if self.startTouchXPosition - touch.location.x < 0  {
-                shape.moveToRight(cells: self.frame.cells)
+                shape.moveToLeft(cells: self.frame.cells)
                 self.frame.updateCells()
             }
         }
@@ -171,6 +177,11 @@ class ARGameViewController: UIViewController {
         guard !self.isGamePaused && self.frame.isPositionPinned else {
             return
         }
+        
+        for shape in self.frame.shapes {
+            shape.rotate(cells: self.frame.cells)
+        }
+        self.frame.updateCells()
     }
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
