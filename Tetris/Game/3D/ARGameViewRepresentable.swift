@@ -26,7 +26,7 @@ struct ARGameViewControllerRepresentable: UIViewControllerRepresentable {
     }
     
     func pauseGame() {
-        ARGameViewController.shared
+        ARGameViewController.shared.pauseGame()
     }
     func makeUIViewController(context: Context) -> ARGameViewController {
         let gameViewController = ARGameViewController.shared

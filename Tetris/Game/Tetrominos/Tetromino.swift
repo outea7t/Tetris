@@ -24,6 +24,7 @@ enum TetrominoRotationType: Int {
     case upsideDown = 2
     case right =      3
 }
+
 class Position {
     var x: Int
     var y: Int
@@ -60,7 +61,7 @@ class Tetromino {
     var lastTime: TimeInterval = 0
     
     var projectionPositions = [Position]()
-    func moveToBottom(frame: Frame, gameScene: GameScene? = nil, arGameViewController: ARGameViewController? = nil) {
+    func moveToBottom(gameScene: GameScene? = nil, arGameViewController: ARGameViewController? = nil) {
         guard !self.isLocked else {
             return
         }
@@ -74,11 +75,12 @@ class Tetromino {
         self.positions = destinationPositions
         
         if let gameScene = gameScene {
-            frame.moveShapeToBottom(gameScene: gameScene)
+            gameScene.cellFrameNode?.moveShapeToBottom(gameScene: gameScene)
         } else if let arGameViewController = arGameViewController {
-            ARGameViewController.shared.frame.moveShapeToBottom(arGameViewController: arGameViewController)
+            arGameViewController.frame.moveShapeToBottom(arGameViewController: arGameViewController)
         }
     }
+    
     /// двигает фигуру вниз
     func moveDown(cells: [[Cell]]) {
         guard !self.isLocked else {

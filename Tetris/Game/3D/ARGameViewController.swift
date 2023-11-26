@@ -133,7 +133,7 @@ class ARGameViewController: UIViewController {
                     return true
                 }
                 TouchTimeInformation.lastMoveToBottomTime = touch.time.timeIntervalSince1970
-//                shape.moveToBottom(frame: self.frame,
+                shape.moveToBottom(arGameViewController: self)
                 self.startTouchYPosition = 0
                 return true
             }

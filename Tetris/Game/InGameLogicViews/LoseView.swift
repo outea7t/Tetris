@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct LoseView: View {
-    @Environment(\.presentationMode) var presentationMode
     private var backgroundColor = #colorLiteral(red: 0.007843137255, green: 0, blue: 0.09019607843, alpha: 1)
     
     var gainedScore: Int
@@ -17,6 +16,9 @@ struct LoseView: View {
     init(gainedScore: Int, gainedMoney: Int) {
         self.gainedScore = gainedScore
         self.gainedMoney = gainedMoney
+        
+        UserStatistics.maxScore = max(UserStatistics.maxScore, gainedScore)
+        UserStatistics.moneyCount += gainedMoney
     }
     
     var body: some View {

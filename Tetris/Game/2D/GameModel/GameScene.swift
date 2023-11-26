@@ -18,7 +18,6 @@ fileprivate class TouchTimeInformation {
 
 class GameScene: SKScene {
     static var shared = GameScene()
-    
     var suiViewDelegate: (any View)?
     
     /// количество уничтоженных линий
@@ -49,12 +48,14 @@ class GameScene: SKScene {
         }
     }
     
+    var gainedMoney = MoneyGainingLogic()
+    
     var isGamePaused = false
     
     private var startTouchYPosition = CGFloat()
     private var startTouchXPosition = CGFloat()
     
-    var cellFrameNode: Frame?
+    var cellFrameNode: Frame2D?
     var nextShapeView_: NextShapeView?
     
     private var isDelaying = false
@@ -70,7 +71,7 @@ class GameScene: SKScene {
         
         Tetromino.setSkins()
         
-        self.cellFrameNode = Frame(gameScene: self)
+        self.cellFrameNode = Frame2D(gameScene: self)
         self.cellFrameNode?.addFirstThreeTetrominos()
         
         guard let frameNode = self.cellFrameNode else {
@@ -130,7 +131,8 @@ class GameScene: SKScene {
                     return true
                 }
                 TouchTimeInformation.lastMoveToBottomTime = touch.time.timeIntervalSince1970
-                shape.moveToBottom(frame: cellFrameNode, gameScene: self)
+                self.gainedMoney.numberOfPullDowns += 1
+                shape.moveToBottom(gameScene: self)
                 self.startTouchYPosition = 0
                 return true
             }
@@ -168,5 +170,12 @@ class GameScene: SKScene {
     
     func changeTetrominoInNextView(type: TetrominoType) {
         self.nextShapeView_?.changeTetrominoInNextView(type: type)
+    }
+    
+    func setLose() {
+        self.gainedMoney.numberOfDestroyedLines = self.destroyedLines
+        if let suiViewDelegate = self.suiViewDelegate as? GameView {
+            suiViewDelegate.showLoseView()
+        }
     }
 }

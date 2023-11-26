@@ -47,7 +47,8 @@
 		229C52B22AEEB42E004FDBAD /* LoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C52B12AEEB42E004FDBAD /* LoseView.swift */; };
 		22A52ACC2B0B2DF600B21720 /* NextShapeView3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A52ACB2B0B2DF600B21720 /* NextShapeView3D.swift */; };
 		22A52ACE2B0B452900B21720 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A52ACD2B0B452900B21720 /* Cell.swift */; };
-		22C28AA92AFC31AC002A753A /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C28AA82AFC31AC002A753A /* Frame.swift */; };
+		22C28AA92AFC31AC002A753A /* Frame2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C28AA82AFC31AC002A753A /* Frame2D.swift */; };
+		22D40FF02B13BC2200FB1E76 /* MoneyGainingLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D40FEF2B13BC2200FB1E76 /* MoneyGainingLogic.swift */; };
 		22EE13F52B093A3100EC7C6B /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE13F42B093A3100EC7C6B /* Plane.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,7 +95,8 @@
 		229C52B12AEEB42E004FDBAD /* LoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseView.swift; sourceTree = "<group>"; };
 		22A52ACB2B0B2DF600B21720 /* NextShapeView3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextShapeView3D.swift; sourceTree = "<group>"; };
 		22A52ACD2B0B452900B21720 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
-		22C28AA82AFC31AC002A753A /* Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame.swift; sourceTree = "<group>"; };
+		22C28AA82AFC31AC002A753A /* Frame2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame2D.swift; sourceTree = "<group>"; };
+		22D40FEF2B13BC2200FB1E76 /* MoneyGainingLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyGainingLogic.swift; sourceTree = "<group>"; };
 		22EE13F42B093A3100EC7C6B /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +186,7 @@
 		2213ED142AE52F2600F15735 /* MainMenu */ = {
 			isa = PBXGroup;
 			children = (
+				22D40FEF2B13BC2200FB1E76 /* MoneyGainingLogic.swift */,
 				220880682AD708B700B54E58 /* MainMenu.swift */,
 				226E66A72ADFE5250084B35D /* MainMenuViews */,
 			);
@@ -195,7 +198,7 @@
 			children = (
 				226E66AA2ADFEC300084B35D /* GameScene.swift */,
 				22365F8B2AFD579B00270FEE /* NextShapeView.swift */,
-				22C28AA82AFC31AC002A753A /* Frame.swift */,
+				22C28AA82AFC31AC002A753A /* Frame2D.swift */,
 				226E66AE2AE059A80084B35D /* Cell2D.swift */,
 			);
 			path = GameModel;
@@ -374,7 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22C28AA92AFC31AC002A753A /* Frame.swift in Sources */,
+				22C28AA92AFC31AC002A753A /* Frame2D.swift in Sources */,
 				222EDE902AF26166005882F4 /* UserCustomization.swift in Sources */,
 				2251C16D2B11213D00514B8B /* ARLoseView.swift in Sources */,
 				223CD8262AEA873300A0134A /* O_Shape.swift in Sources */,
@@ -395,6 +398,7 @@
 				226E66A92ADFE55A0084B35D /* MenuRoundedButton.swift in Sources */,
 				2244E90B2B019A260063FF6C /* ARGameViewController.swift in Sources */,
 				223CD8282AEA873B00A0134A /* T_Shape.swift in Sources */,
+				22D40FF02B13BC2200FB1E76 /* MoneyGainingLogic.swift in Sources */,
 				22A52ACC2B0B2DF600B21720 /* NextShapeView3D.swift in Sources */,
 				22365F8C2AFD579B00270FEE /* NextShapeView.swift in Sources */,
 				222EFF402B02134A00C392AE /* Frame3D.swift in Sources */,

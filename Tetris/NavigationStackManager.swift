@@ -49,7 +49,7 @@ struct NavigationStackManager: View {
                         case .arPauseView:
                             PauseView(currentScore: ARGameViewController.shared.currentScore, backgroundOpacity: 0.5, navigationPaths: $navigationPaths)
                         case .loseView:
-                            LoseView(gainedScore: 100, gainedMoney: 100)
+                            LoseView(gainedScore: GameScene.shared.currentScore, gainedMoney: GameScene.shared.gainedMoney.totalGainedMoney)
                         case .arGameView:
                             ARGameView(navigationPaths: $navigationPaths)
                             

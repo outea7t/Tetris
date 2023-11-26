@@ -29,6 +29,8 @@ struct GameView: View {
         }
     }
     @State var currentLevel: Int = 1
+    
+    var gainedMoney: Int = 0
     @Binding var navigationPaths: [Routes]
     
     var body: some View {

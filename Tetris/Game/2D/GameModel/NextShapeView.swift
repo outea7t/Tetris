@@ -21,7 +21,7 @@ class NextShapeView {
     /// константа для размера ячейки
     private let constantForCellSize: CGFloat = 0.06581197
     
-    init(frame: Frame, gameScene: GameScene) {
+    init(frame: Frame2D, gameScene: GameScene) {
         let scaleConstant = self.constantForCellSize / 3 * gameScene.frame.width
 
         let imagesNames = ["I", "S","Z", "L", "J", "O", "T"]

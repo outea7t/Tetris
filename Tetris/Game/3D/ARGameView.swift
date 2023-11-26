@@ -88,6 +88,7 @@ struct ARGameView: View {
     }
     
     func showPauseView() {
+        self.arGameViewController.pauseGame()
         self.navigationPaths.append(.pauseView)
     }
     private func moveHorizontal(touch: DragGesture.Value) {

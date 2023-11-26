@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 // TODO: Перестать хранить все фигуры, которые когда либо падали, достаточно хранить информацию только о предыдущей
-class Frame {
+class Frame2D {
     // константы для высчитывания размеров элементов рамки с ячейками
     private let constantForFrameWidth: CGFloat = 0.608547008547009
     private let constantForCellSize: CGFloat = 0.06581197
@@ -30,7 +30,6 @@ class Frame {
     private var isDelaying = false
     
     init(gameScene: GameScene) {
-        
         let frameWidth = self.constantForFrameWidth * gameScene.frame.width
         let frameSize = CGSize(width: frameWidth + self.spaceConstant.x * 10 + self.cellOffset.x*0.75,
                                height: frameWidth * 2 + self.spaceConstant.y * 20 + self.cellOffset.y*0.75)
@@ -234,6 +233,10 @@ class Frame {
                 while position.y < 0 {
                     shape.moveUp()
                 }
+            }
+            if position.y > 19 {
+//                GameScene.shared.
+                return
             }
         }
         for position in shape.positions {

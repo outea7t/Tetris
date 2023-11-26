@@ -13,10 +13,10 @@ class I_Shape: Tetromino {
         super.init()
         
         self.type = .i
-        self.positions = [Position(x: 3, y: 17),
-                           Position(x: 4, y: 17),
-                           Position(x: 5, y: 17),
-                           Position(x: 6, y: 17)
+        self.positions = [Position(x: 3, y: 19),
+                           Position(x: 4, y: 19),
+                           Position(x: 5, y: 19),
+                           Position(x: 6, y: 19)
         ]
     }
     

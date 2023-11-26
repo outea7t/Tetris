@@ -103,7 +103,6 @@ class Frame3D {
                                                 )
                 
                 let cell = Cell3D(frameVolume: self.frameBottomVolume, position: cellPosition)
-
                 self.node.addChildNode(cell.node)
                 rowOfCells.append(cell)
             }
