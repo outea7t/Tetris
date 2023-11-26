@@ -26,7 +26,6 @@ struct MainMenu: View {
     private let foreground3DButtonColor = #colorLiteral(red: 1, green: 0.1803921569, blue: 0.1803921569, alpha: 1)
     private let background3DButtonColor = #colorLiteral(red: 0.168627451, green: 0.03529411765, blue: 0.03529411765, alpha: 1)
     
-    
     var body: some View {
         ZStack {
             
@@ -51,13 +50,7 @@ struct MainMenu: View {
                 } label: {
                     EndGameButton(text: "Play", textColor: .white, fontSize: 45)
                         .frame(width: 311, height: 86)
-//                        .padding(.top, 120)
-                        .background(.red)
-                        
                 }
-//                .background(.red)
-                
-                
                 
                 // MARK: Shop Button
                 EndGameButton(text: "Shop", textColor: .white, fontSize: 45)
@@ -69,7 +62,7 @@ struct MainMenu: View {
                     Button {
                         navigationPaths.append(.statisticsMenu)
                     } label: {
-                        MenuRoundedButton(iconName: "star.fill", size: 75)
+                        MenuRoundedButton(iconName: "Star", size: 75)
                     }
                     .padding(.top, 50)
                     .padding(.leading, 33)
@@ -82,14 +75,14 @@ struct MainMenu: View {
                         self.navigationPaths.append(.arGameView)
                     } label: {
                         // MARK: TO 3D Button
-                        MenuRoundedButton(foregroundColor: Color(foreground3DButtonColor), backgroundColor: Color(background3DButtonColor), iconName: "move.3d")
+                        MenuRoundedButton(foregroundColor: Color(foreground3DButtonColor), backgroundColor: Color(background3DButtonColor), textString: "3D")
                             .padding(.top, 15)
                             .padding(.leading, 20)
                     }
                     Spacer()
                     
                     // MARK: Settings Button
-                    MenuRoundedButton(iconName: "gearshape.fill")
+                    MenuRoundedButton(iconName: "Gear")
                         .padding(.top, 15)
                         .padding(.trailing, 20)
                 }

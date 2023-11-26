@@ -108,7 +108,7 @@ class Frame2D {
         self.isDelaying = true
         DispatchQueue.main.asyncAfter(deadline: .now() + self.tetrominoSpeed*2.5) {
             
-            if self.checkIfShouldLockCells() {
+            if self.checkIfShouldLockCells() && !self.nextTetrominos.isEmpty {
                 self.addTetrominoInCells(tetromino: self.nextTetrominos.removeFirst())
                 
                 if let tetromino = self.randomTetromino() {
@@ -234,8 +234,8 @@ class Frame2D {
                     shape.moveUp()
                 }
             }
-            if position.y > 19 {
-//                GameScene.shared.
+            if position.y >= 19 {
+                GameScene.shared.setLose()
                 return
             }
         }
@@ -325,6 +325,7 @@ class Frame2D {
     func clearCells() {
         self.shapes = []
         self.nextTetrominos = []
+        self.tetrominoSpeed = 1
         
         for row in self.cells {
             for cell in row {

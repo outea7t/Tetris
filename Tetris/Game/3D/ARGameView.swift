@@ -25,7 +25,6 @@ struct ARGameView: View {
         }
     }
     
-    
     var body: some View {
         ZStack {
             arGameViewController
@@ -90,6 +89,9 @@ struct ARGameView: View {
     func showPauseView() {
         self.arGameViewController.pauseGame()
         self.navigationPaths.append(.pauseView)
+    }
+    func showLoseView() {
+        self.navigationPaths.append(.loseView)
     }
     private func moveHorizontal(touch: DragGesture.Value) {
         self.arGameViewController.moveHorizontal(touch: touch)

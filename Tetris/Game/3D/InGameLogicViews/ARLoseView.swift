@@ -9,16 +9,20 @@ import SwiftUI
 
 struct ARLoseView: View {
     private var backgroundColor = #colorLiteral(red: 0.007843137255, green: 0, blue: 0.09019607843, alpha: 1)
-    var gainedMoney: Int
-    var gainedScore: Int
     
-    init(gainedMoney: Int, score: Int) {
+    var gainedScore: Int
+    var gainedMoney: Int
+    
+    @Binding var navigationPaths: [Routes]
+    
+    init(gainedScore: Int, gainedMoney: Int, navigationPaths: Binding<[Routes]>) {
+        self.gainedScore = gainedScore
         self.gainedMoney = gainedMoney
-        self.gainedScore = score
-        
-        UserStatistics.maxScore = max(UserStatistics.maxScore, score)
+        self._navigationPaths = navigationPaths
+        UserStatistics.maxScore = max(UserStatistics.maxScore, gainedScore)
         UserStatistics.moneyCount += gainedMoney
     }
+    
     var body: some View {
         ZStack {
             Color(backgroundColor)
@@ -51,13 +55,24 @@ struct ARLoseView: View {
                 Spacer()
                 
                 // MARK: Try Again Button
-                EndGameButton(text: "TryAgain", textColor: .white, fontSize: 40)
-                    .frame(height: 100)
-                    .padding(.bottom, 20)
+                Button {
+                    self.navigationPaths.removeLast()
+                } label: {
+                    EndGameButton(text: "TryAgain", textColor: .white, fontSize: 40)
+                        .frame(height: 100)
+                        .padding(.bottom, 20)
+                }
                 
                 // MARK: Menu Button
-                EndGameButton(text: "Menu", textColor: .white, fontSize: 40)
-                    .frame(height: 100)
+                Button {
+                    ARGameViewController.shared.frame.clearCells()
+                    ARGameViewController.shared.unpauseGame()
+                    self.navigationPaths.removeAll()
+                } label: {
+                    EndGameButton(text: "Menu", textColor: .white, fontSize: 40)
+                        .frame(height: 100)
+                }
+                
                 Spacer()
             }
         }
@@ -65,5 +80,5 @@ struct ARLoseView: View {
 }
 
 #Preview {
-    ARLoseView(gainedMoney: 0, score: 0)
+    ARLoseView(gainedScore: 26112, gainedMoney: 31, navigationPaths: Binding.constant([]))
 }

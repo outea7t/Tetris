@@ -81,6 +81,7 @@ class GameScene: SKScene {
         self.nextShapeView_ = NextShapeView(frame: frameNode, gameScene: self)
         
     }
+    
     override func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
         
@@ -172,9 +173,28 @@ class GameScene: SKScene {
         self.nextShapeView_?.changeTetrominoInNextView(type: type)
     }
     
+    /// перезапуск игры и очистка всей информации о прошлом игровом сеансе
+    func resetGame() {
+        self.isGamePaused = false
+        self.destroyedLines = 0
+        self.currentScore = 0
+        self.currentLevel = 0
+        self.cellFrameNode?.clearCells()
+        self.cellFrameNode?.addFirstThreeTetrominos()
+        
+        guard let cellFrameNode = self.cellFrameNode else {
+            return
+        }
+        
+        self.nextShapeView_?.addNextTetrominos(frame: cellFrameNode)
+        self.nextShapeView_?.clearAllTetrominos()
+    }
+    // возможен сценарий, что пользователь захочет "переиграть"
+    // поэтому очищаем информацию о прошлом игровом сеансе
     func setLose() {
         self.gainedMoney.numberOfDestroyedLines = self.destroyedLines
         if let suiViewDelegate = self.suiViewDelegate as? GameView {
+            self.isGamePaused = true
             suiViewDelegate.showLoseView()
         }
     }

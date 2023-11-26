@@ -21,12 +21,17 @@ class ARGameViewController: UIViewController {
     var suiDelegate: ARGameView?
     /// view, которое отвечает за отрисовку объектов дополненной реальности
     let arscnView = ARSCNView()
+    /// должен ли обновлять ARWroldTrackingConfiguration
+    /// вспомогательная переменная, чтобы не обновлять ее после меню паузы
+    var shouldUpdateConfiguration = true
     /// обнаруженная плоскость
     let detectedPlane = Plane()
     /// сцена, в которой располагаются все игровые объекты
     let gameScene = SCNScene()
     /// рамка с ячейками
     let frame = Frame3D()
+    
+    var gainedMoney = MoneyGainingLogic()
     
     var isGamePaused = false
     
@@ -63,7 +68,6 @@ class ARGameViewController: UIViewController {
         self.configureARSCNView()
         self.frame.addFirstThreeTetrominos()
         
-        
 //        self.frame.node.eulerAngles.y = Float.pi
     }
     
@@ -74,7 +78,9 @@ class ARGameViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.updateConfituration()
+        if self.shouldUpdateConfiguration {
+            self.updateConfituration()
+        }
     }
     
 //    override func update
@@ -133,6 +139,7 @@ class ARGameViewController: UIViewController {
                     return true
                 }
                 TouchTimeInformation.lastMoveToBottomTime = touch.time.timeIntervalSince1970
+                self.gainedMoney.numberOfPullDowns+=1
                 shape.moveToBottom(arGameViewController: self)
                 self.startTouchYPosition = 0
                 return true
@@ -184,6 +191,23 @@ class ARGameViewController: UIViewController {
         self.frame.updateCells()
     }
     
+    func resetGame() {
+        self.isGamePaused = false
+        self.destroyedLines = 0
+        self.currentScore = 0
+        self.currentLevel = 0
+        self.frame.clearCells()
+        self.frame.addFirstThreeTetrominos()
+//        self.nextShapeView_?.addNextTetrominos(frame: frame)
+//        self.nextShapeView_?.clearAllTetrominos()
+    }
+    
+    func setLose() {
+        self.arscnView.session.pause()
+        self.gainedMoney.numberOfDestroyedLines = self.destroyedLines
+        self.isGamePaused = true
+        self.suiDelegate?.showLoseView()
+    }
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         guard !self.isGamePaused && self.frame.isPositionPinned else {
             return
@@ -192,8 +216,10 @@ class ARGameViewController: UIViewController {
         self.frame.update(time, in: self)
     }
     private func updateConfituration() {
-        let configuration = ARWorldTrackingConfiguration()
+        print("CONFIGURATION UPDATED")
         
+        let configuration = ARWorldTrackingConfiguration()
+
         configuration.planeDetection = .horizontal
         configuration.isLightEstimationEnabled = true
         configuration.environmentTexturing = .none
@@ -257,14 +283,13 @@ class ARGameViewController: UIViewController {
         
         NSLayoutConstraint.activate(constraints)
     }
+    
     private func configureFrame() {
         guard let detectedPlaneNode = self.detectedPlane.detectedPlaneNode else {
             return
         }
         self.frame.addFrame(to: self.gameScene.rootNode, in: detectedPlaneNode.worldPosition)
     }
-    
-    
 }
 
 // обнаружение плоскости
@@ -288,9 +313,9 @@ extension ARGameViewController: ARSCNViewDelegate {
         
         if self.detectedPlane.wantSetPosition && !self.detectedPlane.wantDetectPlane {
             let waitAction = SCNAction.wait(duration: 2.0)
+            self.detectedPlane.wantSetPosition = false
             self.gameScene.rootNode.runAction(waitAction) {
                 self.configureFrame()
-                self.detectedPlane.wantSetPosition = false
                 HapticManager.collisionVibrate(with: .medium, 1.0)
             }
         }

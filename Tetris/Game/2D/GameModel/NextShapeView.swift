@@ -71,6 +71,10 @@ class NextShapeView {
         self.nextFiguresPositions.append(CGPoint())
         self.nextFiguresPositions.append(CGPoint(x: 0, y: -0.33*nextShapeViewSize.height))
 
+        self.addNextTetrominos(frame: frame)
+    }
+    
+    func addNextTetrominos(frame: Frame2D) {
         var i: Int = 0
         for tetromino in frame.nextTetrominos {
             if let tetromino = self.tetrominos[tetromino.type.rawValue].copy() as? SKSpriteNode {
@@ -82,7 +86,11 @@ class NextShapeView {
             }
         }
     }
-    
+    func clearAllTetrominos() {
+        for tetromino in self.tetrominosInNextShapesNode {
+            tetromino.removeFromParent()
+        }
+    }
     func changeTetrominoInNextView(type: TetrominoType) {
         guard let tetromino = self.tetrominos[type.rawValue].copy() as? SKSpriteNode else {
             return
