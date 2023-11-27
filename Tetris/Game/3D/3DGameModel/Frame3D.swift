@@ -17,6 +17,12 @@ enum WallType: Int {
 }
 class Frame3D {
     var node: SCNNode
+    private var frontWall = SCNNode()
+    private var leftSideWall = SCNNode()
+    private var rightSideWall = SCNNode()
+    private var bottomWall = SCNNode()
+    
+    private var plateVolume: SCNVector3
     
     var cells = [[Cell3D]]()
     
@@ -71,6 +77,7 @@ class Frame3D {
                                    y: self.frameBottomVolume.y,
                                    z: firstPartZ + secondPartZ)
         
+        self.plateVolume = frameSize
         
         let frameBottomGeometry = SCNBox(width: Double(frameSize.x),
                                          height: Double(frameSize.y),
@@ -83,6 +90,11 @@ class Frame3D {
         frameBottomGeometry.materials = [frameBottomMaterial]
         
         self.node.geometry = frameBottomGeometry
+        
+        self.addWalls(frontWallVolume: SCNVector3(x: frameSize.x, y: 0.05, z: 0.025),
+                      leftSideWallVolume: SCNVector3(x: 0.025, y: 0.05, z: frameSize.z),
+                      bottomWallVolume: SCNVector3(x: frameSize.x, y: 0.05, z: 0.025),
+                      rightSideWallVolume: SCNVector3(x: 0.025, y: 0.05, z: frameSize.z))
         
         let oneTenthOfWidth = self.frameBottomVolume.x/10.0
         // вычисление позиции определенной ячейки
@@ -109,6 +121,7 @@ class Frame3D {
             self.cells.append(rowOfCells)
         }
         
+        self.setModels()
     }
     
     func addFirstThreeTetrominos() {
@@ -374,5 +387,75 @@ class Frame3D {
     func addFrame(to parentNode: SCNNode, in position: SCNVector3) {
         self.node.position = position
         parentNode.addChildNode(self.node)
+    }
+    
+    private func setFrame3DModel() {
+        
+    }
+    
+    private func setPlate(volume: SCNVector3) -> SCNNode {
+        let plate = SCNNode()
+        
+        plate.geometry = SCNBox(width: CGFloat(volume.x),
+                               height: CGFloat(volume.y),
+                               length: CGFloat(volume.z),
+                               chamferRadius: 0)
+        
+        let material = SCNMaterial()
+        material.diffuse.contents = UIColor.clear
+        plate.geometry?.materials = [material]
+        return plate
+    }
+    
+    /// добавляем к рамке стены
+    func addWalls(frontWallVolume: SCNVector3, leftSideWallVolume: SCNVector3, bottomWallVolume: SCNVector3, rightSideWallVolume: SCNVector3) {
+        self.frontWall = self.setPlate(volume: SCNVector3(x: plateVolume.x, y: 0.05, z: 0.025))
+        self.leftSideWall = self.setPlate(volume: SCNVector3(x: 0.025, y: 0.05, z: plateVolume.z))
+        self.bottomWall = self.setPlate(volume: SCNVector3(x: plateVolume.x, y: 0.05, z: 0.025))
+        self.rightSideWall = self.setPlate(volume: SCNVector3(x: 0.025, y: 0.05, z: plateVolume.z))
+        
+        self.node.addChildNode(self.frontWall)
+        self.node.addChildNode(self.leftSideWall)
+        self.node.addChildNode(self.bottomWall)
+        self.node.addChildNode(self.rightSideWall)
+        
+        self.frontWall.position = SCNVector3(x: 0,
+                                             y: plateVolume.y/2.0 + frontWallVolume.y/2.0,
+                                             z: 0 - plateVolume.z/2.0 - frontWallVolume.z/2.0)
+        
+        self.leftSideWall.position = SCNVector3(x: 0 - plateVolume.x/2.0 - leftSideWallVolume.x/2.0,
+                                                y: plateVolume.y/2.0 + leftSideWallVolume.y/2.0,
+                                                z:0)
+        self.rightSideWall.position = SCNVector3(x: plateVolume.x/2.0 + rightSideWallVolume.x/2.0,
+                                                 y: plateVolume.y/2.0 + rightSideWallVolume.y/2.0,
+                                                 z: 0)
+        self.bottomWall.position = SCNVector3(x: 0,
+                                              y: plateVolume.y/2.0 + bottomWallVolume.y/2.0,
+                                              z: plateVolume.z/2.0 + bottomWallVolume.z/2.0)
+        
+    }
+    
+    func setModels() {
+        guard let frontWallScene = SCNScene(named: "frontWall.dae"),
+              let bottomWallScene = SCNScene(named: "bottomWall.dae"),
+              let rightSideWallScene = SCNScene(named: "rightSideWall.dae"),
+              let leftSideWallScene = SCNScene(named: "leftSideWall.dae"),
+              let plateScene = SCNScene(named: "plate.dae")
+        else {
+              return
+              }
+        guard let frontWallModel = frontWallScene.rootNode.childNode(withName: "wall", recursively: true),
+              let bottomWallModel = bottomWallScene.rootNode.childNode(withName: "wall", recursively: true),
+              let rightSideWallModel = rightSideWallScene.rootNode.childNode(withName: "wall", recursively: true),
+              let leftSideWallModel = leftSideWallScene.rootNode.childNode(withName: "wall", recursively: true),
+              let plateModel = plateScene.rootNode.childNode(withName: "plate", recursively: true) else {
+            return
+        }
+        
+        self.frontWall.addChildNode(frontWallModel)
+        self.rightSideWall.addChildNode(rightSideWallModel)
+        self.bottomWall.addChildNode(bottomWallModel)
+        self.leftSideWall.addChildNode(leftSideWallModel)
+        self.node.addChildNode(plateModel)
     }
 }

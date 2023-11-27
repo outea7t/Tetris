@@ -67,7 +67,6 @@ class ARGameViewController: UIViewController {
         self.configureScene()
         self.configureARSCNView()
         self.frame.addFirstThreeTetrominos()
-        
 //        self.frame.node.eulerAngles.y = Float.pi
     }
     
@@ -217,7 +216,6 @@ class ARGameViewController: UIViewController {
     }
     private func updateConfituration() {
         print("CONFIGURATION UPDATED")
-        
         let configuration = ARWorldTrackingConfiguration()
 
         configuration.planeDetection = .horizontal

@@ -55,7 +55,7 @@
 		22D40FFF2B13CB8100FB1E76 /* frontWall.dae in Resources */ = {isa = PBXBuildFile; fileRef = 22D40FFA2B13CB8100FB1E76 /* frontWall.dae */; };
 		22D410002B13CB8100FB1E76 /* leftSideWall.dae in Resources */ = {isa = PBXBuildFile; fileRef = 22D40FFB2B13CB8100FB1E76 /* leftSideWall.dae */; };
 		22D410012B13CB8100FB1E76 /* plate.dae in Resources */ = {isa = PBXBuildFile; fileRef = 22D40FFC2B13CB8100FB1E76 /* plate.dae */; };
-		22D410022B13CB8100FB1E76 /* fuuuck.dae in Resources */ = {isa = PBXBuildFile; fileRef = 22D40FFD2B13CB8100FB1E76 /* fuuuck.dae */; };
+		22D410022B13CB8100FB1E76 /* rightSideWall.dae in Resources */ = {isa = PBXBuildFile; fileRef = 22D40FFD2B13CB8100FB1E76 /* rightSideWall.dae */; };
 		22EE13F52B093A3100EC7C6B /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE13F42B093A3100EC7C6B /* Plane.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,7 +110,7 @@
 		22D40FFA2B13CB8100FB1E76 /* frontWall.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = frontWall.dae; sourceTree = "<group>"; };
 		22D40FFB2B13CB8100FB1E76 /* leftSideWall.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = leftSideWall.dae; sourceTree = "<group>"; };
 		22D40FFC2B13CB8100FB1E76 /* plate.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = plate.dae; sourceTree = "<group>"; };
-		22D40FFD2B13CB8100FB1E76 /* fuuuck.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = fuuuck.dae; sourceTree = "<group>"; };
+		22D40FFD2B13CB8100FB1E76 /* rightSideWall.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = rightSideWall.dae; sourceTree = "<group>"; };
 		22EE13F42B093A3100EC7C6B /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -352,7 +352,7 @@
 			children = (
 				22D40FF92B13CB8100FB1E76 /* bottomWall.dae */,
 				22D40FFA2B13CB8100FB1E76 /* frontWall.dae */,
-				22D40FFD2B13CB8100FB1E76 /* fuuuck.dae */,
+				22D40FFD2B13CB8100FB1E76 /* rightSideWall.dae */,
 				22D40FFB2B13CB8100FB1E76 /* leftSideWall.dae */,
 				22D40FFC2B13CB8100FB1E76 /* plate.dae */,
 			);
@@ -422,7 +422,7 @@
 				2208806E2AD708B700B54E58 /* Preview Assets.xcassets in Resources */,
 				2208806B2AD708B700B54E58 /* Assets.xcassets in Resources */,
 				22D410002B13CB8100FB1E76 /* leftSideWall.dae in Resources */,
-				22D410022B13CB8100FB1E76 /* fuuuck.dae in Resources */,
+				22D410022B13CB8100FB1E76 /* rightSideWall.dae in Resources */,
 				22D410012B13CB8100FB1E76 /* plate.dae in Resources */,
 				22D40FFE2B13CB8100FB1E76 /* bottomWall.dae in Resources */,
 			);

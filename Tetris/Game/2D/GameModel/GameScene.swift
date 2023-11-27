@@ -18,6 +18,7 @@ fileprivate class TouchTimeInformation {
 
 class GameScene: SKScene {
     static var shared = GameScene()
+    
     var suiViewDelegate: (any View)?
     
     /// количество уничтоженных линий
