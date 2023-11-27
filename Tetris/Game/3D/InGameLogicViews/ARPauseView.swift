@@ -10,14 +10,14 @@ import SwiftUI
 struct ARPauseView: View {
     private var backgroundColor = #colorLiteral(red: 0.007843137255, green: 0, blue: 0.09019607843, alpha: 1)
     
-    var currentScore: Int
+    @State var currentScore: Int
     var backgroundOpacity: Double
     private var shouldAddBackgroundBlur: Bool
     
     @Binding var navigationPaths: [Routes]
     
     init(currentScore: Int, backgroundOpacity: Double, navigationPaths: Binding<[Routes]>) {
-        self.currentScore = currentScore
+        self.currentScore = ARGameViewController.shared?.currentScore ?? 0
         self.backgroundOpacity = backgroundOpacity
         self._navigationPaths = navigationPaths
         
@@ -56,8 +56,8 @@ struct ARPauseView: View {
                 
                 // MARK: Continue Button
                 Button {
-                    ARGameViewController.shared.unpauseGame()
-                    ARGameViewController.shared.shouldUpdateConfiguration = false
+                    ARGameViewController.shared?.unpauseGame()
+                    ARGameViewController.shared?.shouldUpdateConfiguration = false
                     self.navigationPaths.removeLast()
                 } label: {
                     EndGameButton(text: "Continue", textColor: .white, fontSize: 40)
@@ -67,9 +67,10 @@ struct ARPauseView: View {
                 
                 // MARK: Menu Button
                 Button {
-                    ARGameViewController.shared.clearCells()
-                    ARGameViewController.shared.unpauseGame()
-                    ARGameViewController.shared.shouldUpdateConfiguration = true
+                    ARGameViewController.shared?.resetGame()
+                    ARGameViewController.shared?.unpauseGame()
+                    ARGameViewController.shared?.shouldUpdateConfiguration = true
+                    ARGameViewController.shared = nil   
                     self.navigationPaths.removeLast()
                     self.navigationPaths.removeLast()
                 } label: {

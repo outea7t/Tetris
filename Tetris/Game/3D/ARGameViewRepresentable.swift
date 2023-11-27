@@ -13,24 +13,31 @@ struct ARGameViewControllerRepresentable: UIViewControllerRepresentable {
     
     /// двигаем текущую фигуру по горизонтали
     func moveHorizontal(touch: DragGesture.Value) {
-        ARGameViewController.shared.moveHorizontal(touch: touch)
+        ARGameViewController.shared?.moveHorizontal(touch: touch)
     }
     
     /// двигаем текущую фигуру по вертикали
     func moveVertical(touch: DragGesture.Value) -> Bool {
-        return ARGameViewController.shared.moveVertical(touch: touch)
+        if let result = ARGameViewController.shared?.moveVertical(touch: touch) {
+            return result
+        }
+        return false
     }
     
     func onTapGesture() {
-        ARGameViewController.shared.onTapGesture()
+        ARGameViewController.shared?.onTapGesture()
     }
     
     func pauseGame() {
-        ARGameViewController.shared.pauseGame()
+        ARGameViewController.shared?.pauseGame()
     }
     func makeUIViewController(context: Context) -> ARGameViewController {
-        let gameViewController = ARGameViewController.shared
-        return gameViewController
+        ARGameViewController.shared = ARGameViewController()
+        if let gameViewController = ARGameViewController.shared {
+            return gameViewController
+        } else {
+            return ARGameViewController()
+        }
     }
 
     func updateUIViewController(_ uiViewController: ARGameViewController, context: Context) {

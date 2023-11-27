@@ -16,7 +16,7 @@ fileprivate class TouchTimeInformation {
     static var lastMoveToBottomTime: TimeInterval = 0.0
 }
 class ARGameViewController: UIViewController {
-    static var shared = ARGameViewController()
+    static var shared: ARGameViewController? = ARGameViewController()
     
     var suiDelegate: ARGameView?
     /// view, которое отвечает за отрисовку объектов дополненной реальности
@@ -34,22 +34,29 @@ class ARGameViewController: UIViewController {
     var gainedMoney = MoneyGainingLogic()
     
     var isGamePaused = false
+    /// освещение в игре
+    private let lightNode = SCNNode()
     
     var destroyedLines: Int = 0 {
         willSet {
+            
             if let suiDelegate = self.suiDelegate {
+                
                 suiDelegate.destroyedLines = newValue
             }
         }
     }
     var currentScore: Int = 0 {
+        
         willSet {
+            print("Entered-2")
             if let suiDelegate = self.suiDelegate {
+                print("Entered-1")
                 suiDelegate.currentScore = newValue
             }
         }
     }
-    var currentLevel: Int = 0 {
+    var currentLevel: Int = 1 {
         willSet {
             if let suiDelegate = self.suiDelegate {
                 suiDelegate.currentLevel = newValue
@@ -67,22 +74,18 @@ class ARGameViewController: UIViewController {
         self.configureScene()
         self.configureARSCNView()
         self.frame.addFirstThreeTetrominos()
-//        self.frame.node.eulerAngles.y = Float.pi
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.arscnView.session.pause()
+//        self.configureLight()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if self.shouldUpdateConfiguration {
+            print("Updated Configuration")
             self.updateConfituration()
         }
     }
     
-//    override func update
+    //    override func update
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         withUnsafePointer(to: self.frame) { pointer in
             print("Memory address of a frame: \(pointer)")
@@ -120,7 +123,7 @@ class ARGameViewController: UIViewController {
         
     }
     func moveVertical(touch: DragGesture.Value) -> Bool {
-       
+        
         guard !self.isGamePaused && self.frame.isPositionPinned else {
             return false
         }
@@ -159,7 +162,8 @@ class ARGameViewController: UIViewController {
         guard !self.isGamePaused && self.frame.isPositionPinned else {
             return
         }
-        guard abs(touch.location.x - self.startTouchXPosition) >= 25 else {
+        guard abs(touch.location.x - self.startTouchXPosition) >= 55 else {
+            //            self.startTouchXPosition = touch.location.x
             return
         }
         
@@ -197,8 +201,16 @@ class ARGameViewController: UIViewController {
         self.currentLevel = 0
         self.frame.clearCells()
         self.frame.addFirstThreeTetrominos()
-//        self.nextShapeView_?.addNextTetrominos(frame: frame)
-//        self.nextShapeView_?.clearAllTetrominos()
+        
+        self.detectedPlane.resetPlane(session: self.arscnView.session)
+        
+        for node in self.gameScene.rootNode.childNodes {
+            node.removeFromParentNode()
+        }
+        self.arscnView.session.pause()
+        
+        //        self.nextShapeView_?.addNextTetrominos(frame: frame)
+        //        self.nextShapeView_?.clearAllTetrominos()
     }
     
     func setLose() {
@@ -213,16 +225,20 @@ class ARGameViewController: UIViewController {
         }
         
         self.frame.update(time, in: self)
+        
+        if let estimate = self.arscnView.session.currentFrame?.lightEstimate {
+            self.lightNode.light?.intensity = estimate.ambientIntensity
+        }
     }
     private func updateConfituration() {
-        print("CONFIGURATION UPDATED")
         let configuration = ARWorldTrackingConfiguration()
-
+        
         configuration.planeDetection = .horizontal
         configuration.isLightEstimationEnabled = true
         configuration.environmentTexturing = .none
         
         self.arscnView.session.run(configuration, options: [.removeExistingAnchors, .resetTracking])
+        
     }
     
     private func configureScene() {
@@ -245,7 +261,7 @@ class ARGameViewController: UIViewController {
         self.view.addSubview(self.arscnView)
         
         self.arscnView.delegate = self
-
+        
         self.arscnView.allowsCameraControl = false
         self.arscnView.autoenablesDefaultLighting = true
         
@@ -257,7 +273,7 @@ class ARGameViewController: UIViewController {
             .showPhysicsShapes
         ]
         // делегат для работы функций контакта
-//        self.arscnView.scene.physicsWorld.contactDelegate = self
+        //        self.arscnView.scene.physicsWorld.contactDelegate = self
         // устанавливаем предпочтительное количество кадров в секунду у view
         self.arscnView.preferredFramesPerSecond = 60
         self.arscnView.rendersMotionBlur = true
@@ -282,6 +298,33 @@ class ARGameViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
+    private func configureLight() {
+        // создаем свет
+        let lightObject = SCNLight()
+        // тип света
+        
+        lightObject.type = .omni
+        lightObject.drawsArea = true
+
+        lightObject.shadowMode = SCNShadowMode.forward
+        lightObject.castsShadow = true
+        lightObject.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.85)
+        
+        lightObject.color = #colorLiteral(red: 0.9999999404, green: 1, blue: 1, alpha: 1)
+        
+        lightObject.shadowRadius = 12
+        lightObject.shadowBias = 40
+        
+        lightObject.shadowMapSize = CGSize(width: 2048, height: 2048)
+        lightObject.shadowSampleCount = 128
+        lightObject.intensity = 750
+        
+        self.lightNode.light = lightObject
+        self.lightNode.position = SCNVector3(x: 0.0, y: 1.0, z: -0.4)
+        self.lightNode.name = "Light"
+        self.gameScene.rootNode.addChildNode(self.lightNode)
+        
+    }
     private func configureFrame() {
         guard let detectedPlaneNode = self.detectedPlane.detectedPlaneNode else {
             return

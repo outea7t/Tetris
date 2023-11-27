@@ -60,9 +60,13 @@ class Cell3D: Cell {
             let material = SCNMaterial()
             if newValue == .clear {
                 material.diffuse.contents = #colorLiteral(red: 0.2851957083, green: 0.2851957083, blue: 0.2851957083, alpha: 1)
+                
             } else {
                 material.diffuse.contents = newValue
             }
+            material.lightingModel = .physicallyBased
+            material.roughness.contents = 0.0
+            material.metalness.contents = 1.0
             self.node.geometry?.materials = [material]
         }
     }
@@ -79,6 +83,9 @@ class Cell3D: Cell {
         
         let material = SCNMaterial()
         material.diffuse.contents = #colorLiteral(red: 0.2851957083, green: 0.2851957083, blue: 0.2851957083, alpha: 1)
+        material.lightingModel = .physicallyBased
+        material.roughness.contents = 0.0
+        material.metalness.contents = 1.0
         geometry.materials = [material]
         
         self.node.geometry = geometry

@@ -91,4 +91,17 @@ class Plane {
         newPlaneMaterial.lightingModel = .shadowOnly
         self.detectedPlaneNode?.geometry?.materials = [newPlaneMaterial]
     }
+    
+    func resetPlane(session: ARSession) {
+        for anchor in planeAnchors {
+            session.remove(anchor: anchor)
+        }
+        
+        planeAnchors.removeAll()
+        
+        self.detectedPlaneNode?.removeFromParentNode()
+        
+        self.wantDetectPlane = true
+        self.wantSetPosition = true
+    }
 }

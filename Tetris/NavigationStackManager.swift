@@ -48,15 +48,15 @@ struct NavigationStackManager: View {
                         case .pauseView:
                             PauseView(currentScore: GameScene.shared.currentScore, backgroundOpacity: 1.0, navigationPaths: $navigationPaths)
                         case .arPauseView:
-                            ARPauseView(currentScore: ARGameViewController.shared.currentScore, backgroundOpacity: 0.5, navigationPaths: $navigationPaths)
+                            ARPauseView(currentScore: ARGameViewController.shared?.currentScore ?? 0, backgroundOpacity: 0.5, navigationPaths: $navigationPaths)
                         case .loseView:
                             LoseView(gainedScore: GameScene.shared.currentScore, 
                                      gainedMoney: GameScene.shared.gainedMoney.totalGainedMoney,
                                      navigationPaths: $navigationPaths
                             )
                         case .arLoseView:
-                            ARLoseView(gainedScore: ARGameViewController.shared.currentScore,
-                                     gainedMoney: ARGameViewController.shared.gainedMoney.totalGainedMoney,
+                            ARLoseView(gainedScore: ARGameViewController.shared?.currentScore ?? 0,
+                                     gainedMoney: ARGameViewController.shared?.gainedMoney.totalGainedMoney ?? 0,
                                      navigationPaths: $navigationPaths
                             )
                         case .arGameView:

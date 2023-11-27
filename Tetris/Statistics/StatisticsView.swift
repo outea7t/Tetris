@@ -88,7 +88,7 @@ struct StatisticsView: View {
                 PixelText(text: "Money Count", fontSize: 25, color: .white)
                     .padding(.bottom, 10)
                 
-                PixelText(text: "\(UserCustomization.countOfBuyedSkins)", fontSize: 25, color: .white)
+                PixelText(text: "\(UserStatistics.moneyCount)", fontSize: 25, color: .white)
                 //                        .padding(.leading, 30)
 //            }
                 Spacer()

@@ -65,8 +65,9 @@ struct ARLoseView: View {
                 
                 // MARK: Menu Button
                 Button {
-                    ARGameViewController.shared.frame.clearCells()
-                    ARGameViewController.shared.unpauseGame()
+                    ARGameViewController.shared?.resetGame()
+                    ARGameViewController.shared?.unpauseGame()
+                    ARGameViewController.shared = nil  
                     self.navigationPaths.removeAll()
                 } label: {
                     EndGameButton(text: "Menu", textColor: .white, fontSize: 40)

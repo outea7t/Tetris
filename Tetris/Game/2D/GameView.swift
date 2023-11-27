@@ -82,7 +82,7 @@ struct GameView: View {
                         .foregroundStyle(.white)
                     
                     // MARK: Max Score
-                    Text("261,130")
+                    Text("\(UserStatistics.maxScore)")
                         .font(.custom("04b", size: 15))
                         .foregroundStyle(.white)
                         .padding(.top, 10)

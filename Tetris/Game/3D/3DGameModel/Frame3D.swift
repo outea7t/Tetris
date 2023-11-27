@@ -32,11 +32,7 @@ class Frame3D {
     /// закреплена ли позиция рамки
     /// При обнаружении плоскости пользователь может передвигать рамку, двигая телефон
     /// когда он нажмет на экран, то рамка установится и переменная будет равна true
-    var isPositionPinned = false {
-        willSet {
-            print(newValue, " FUCK ")
-        }
-    }
+    var isPositionPinned = false
     
     /// для логики создания рамки
     var wantSetPosition = false
@@ -91,10 +87,10 @@ class Frame3D {
         
         self.node.geometry = frameBottomGeometry
         
-        self.addWalls(frontWallVolume: SCNVector3(x: frameSize.x, y: 0.05, z: 0.025),
-                      leftSideWallVolume: SCNVector3(x: 0.025, y: 0.05, z: frameSize.z),
-                      bottomWallVolume: SCNVector3(x: frameSize.x, y: 0.05, z: 0.025),
-                      rightSideWallVolume: SCNVector3(x: 0.025, y: 0.05, z: frameSize.z))
+//        self.addWalls(frontWallVolume: SCNVector3(x: frameSize.x, y: 0.05, z: 0.025),
+//                      leftSideWallVolume: SCNVector3(x: 0.025, y: 0.05, z: frameSize.z),
+//                      bottomWallVolume: SCNVector3(x: frameSize.x, y: 0.05, z: 0.025),
+//                      rightSideWallVolume: SCNVector3(x: 0.025, y: 0.05, z: frameSize.z))
         
         let oneTenthOfWidth = self.frameBottomVolume.x/10.0
         // вычисление позиции определенной ячейки
@@ -121,7 +117,7 @@ class Frame3D {
             self.cells.append(rowOfCells)
         }
         
-        self.setModels()
+//        self.setModels()
     }
     
     func addFirstThreeTetrominos() {
@@ -385,7 +381,8 @@ class Frame3D {
     }
 
     func addFrame(to parentNode: SCNNode, in position: SCNVector3) {
-        self.node.position = position
+        let computedPosition = SCNVector3(x: position.x, y: position.y + 0.05, z: position.z)
+        self.node.position = computedPosition
         parentNode.addChildNode(self.node)
     }
     
@@ -408,7 +405,7 @@ class Frame3D {
     }
     
     /// добавляем к рамке стены
-    func addWalls(frontWallVolume: SCNVector3, leftSideWallVolume: SCNVector3, bottomWallVolume: SCNVector3, rightSideWallVolume: SCNVector3) {
+    private func addWalls(frontWallVolume: SCNVector3, leftSideWallVolume: SCNVector3, bottomWallVolume: SCNVector3, rightSideWallVolume: SCNVector3) {
         self.frontWall = self.setPlate(volume: SCNVector3(x: plateVolume.x, y: 0.05, z: 0.025))
         self.leftSideWall = self.setPlate(volume: SCNVector3(x: 0.025, y: 0.05, z: plateVolume.z))
         self.bottomWall = self.setPlate(volume: SCNVector3(x: plateVolume.x, y: 0.05, z: 0.025))
@@ -435,7 +432,8 @@ class Frame3D {
         
     }
     
-    func setModels() {
+    /// добавляем к рамке 3д модели
+    private func setModels() {
         guard let frontWallScene = SCNScene(named: "frontWall.dae"),
               let bottomWallScene = SCNScene(named: "bottomWall.dae"),
               let rightSideWallScene = SCNScene(named: "rightSideWall.dae"),

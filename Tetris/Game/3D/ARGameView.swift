@@ -12,12 +12,12 @@ struct ARGameView: View {
     @Binding var navigationPaths: [Routes]
     private var arGameViewController: ARGameViewControllerRepresentable {
         let controller = ARGameViewControllerRepresentable.shared
-        ARGameViewController.shared.suiDelegate = self
+        ARGameViewController.shared?.suiDelegate = self
         return controller
     }
     
     @State var destroyedLines: Int = 0
-    @State var currentLevel: Int = 0
+    @State var currentLevel: Int = 1
     @State var currentScore: Int = 0
     var maxScore: Int {
         get {
@@ -88,10 +88,10 @@ struct ARGameView: View {
     
     func showPauseView() {
         self.arGameViewController.pauseGame()
-        self.navigationPaths.append(.pauseView)
+        self.navigationPaths.append(.arPauseView)
     }
     func showLoseView() {
-        self.navigationPaths.append(.loseView)
+        self.navigationPaths.append(.arLoseView)
     }
     private func moveHorizontal(touch: DragGesture.Value) {
         self.arGameViewController.moveHorizontal(touch: touch)
