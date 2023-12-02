@@ -19,19 +19,25 @@ struct GameLogo: View {
 
     @State private var rotation: CGFloat = 0
     
+    @State private var isAnimating: Bool = false
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 32)
-                .frame(width: 400, height: 400)
+                .frame(width: 475, height: 475)
                 .foregroundStyle(LinearGradient(colors: strokeGradientColors,
                                                 startPoint: .top,
                                                 endPoint: .bottom))
-                .rotationEffect(.degrees(rotation))
+                .rotationEffect(.degrees(self.isAnimating ? 0 : 360))
+                .animation(
+                    Animation.easeInOut(duration: 4.0)
+                        .repeatForever(autoreverses: false)
+                        
+                )
                 .mask {
                     RoundedRectangle(cornerRadius: 32)
                         .stroke(lineWidth: 8)
-                        .frame(width: 360, height: 160)
-                        .blur(radius: 10)
+                        .frame(width: 360, height: 150)
+                        .blur(radius: 6)
                 }
             
             RoundedRectangle(cornerRadius: 30)
@@ -40,17 +46,25 @@ struct GameLogo: View {
                     .shadow(.inner(color: .black.opacity(0.3), radius: 10, x: 20, y: 10)))
             
             RoundedRectangle(cornerRadius: 32)
-                .frame(width: 400, height: 400)
+                .frame(width: 475, height: 475)
                 .foregroundStyle(LinearGradient(colors: strokeGradientColors,
                                                 startPoint: .top,
                                                 endPoint: .bottom))
-                .rotationEffect(.degrees(rotation))
+                .rotationEffect(.degrees(self.isAnimating ? 0 : 360))
+                .animation(
+                    Animation.easeInOut(duration: 4.0)
+                        .repeatForever(autoreverses: false)
+                        
+                )
                 .mask {
                     RoundedRectangle(cornerRadius: 32)
                         .stroke(lineWidth: 8)
                         .frame(width: 350, height: 140)
                 }
             PixelText(text: "Tetris", fontSize: 65, color: .white)
+        }
+        .onAppear {
+            isAnimating.toggle()
         }
 //        .onAppear {
 //            withAnimation(.easeInOut(duration: 4).repeatForever(autoreverses: false)) {

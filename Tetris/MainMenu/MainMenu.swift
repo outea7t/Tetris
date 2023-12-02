@@ -40,8 +40,8 @@ struct MainMenu: View {
                 // MARK: Game Logo
                 GameLogo()
                     .frame(width: 350, height: 140)
-                        .padding(.top, 20)
-
+                    .padding(.top, 20)
+                    
                 Spacer()
                 
                 // MARK: Play Button

@@ -22,17 +22,22 @@ struct EndGameButton: View {
     
     @State private var rotation: CGFloat = 0
     
+    @State private var isAnimating: Bool = false
     var body: some View {
         ZStack {
             // MARK: Blurred Capsule
             Capsule()
-                .frame(width: 400, height: 160)
+                .frame(width: 400, height: 400)
                 .foregroundStyle(LinearGradient(colors: strokeGradientColors,
                                                 startPoint: .top,
                                                 endPoint: .bottom
                                                ))
-            
-                .rotationEffect(.degrees(rotation))
+                .rotationEffect(.degrees(self.isAnimating ? 0 : 360))
+                .animation(
+                    Animation.easeInOut(duration: 4.0)
+                        .repeatForever(autoreverses: false)
+                        
+                )
                 .mask {
                     Capsule()
                         .stroke(lineWidth: 9)
@@ -48,13 +53,17 @@ struct EndGameButton: View {
             
             // MARK: Stroke Capsule
             RoundedRectangle(cornerRadius: 0)
-                .frame(width: 330, height: 110)
+                .frame(width: 330, height: 400)
                 .foregroundStyle(LinearGradient(colors: strokeGradientColors,
                                                 startPoint: .top,
                                                 endPoint: .bottom
                                                ))
-            
-                .rotationEffect(.degrees(rotation))
+                .rotationEffect(.degrees(self.isAnimating ? 0 : 360))
+                .animation(
+                    Animation.easeInOut(duration: 4.0)
+                        .repeatForever(autoreverses: false)
+                        
+                )
                 .mask {
                     Capsule()
                         .stroke(lineWidth: 9)
@@ -63,12 +72,9 @@ struct EndGameButton: View {
             
             PixelText(text: text, fontSize: fontSize, color: textColor)
         }
-        // MARK: Rotation Animation
-//        .onAppear {
-//            withAnimation(.easeInOut(duration: 3).repeatForever(autoreverses: false)) {
-//                rotation = 360
-//            }
-//        }
+        .onAppear {
+            isAnimating.toggle()
+        }
     }
 }
 
