@@ -45,6 +45,7 @@
 		226E66AF2AE059A80084B35D /* Cell2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E66AE2AE059A80084B35D /* Cell2D.swift */; };
 		229C52B02AEEB426004FDBAD /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C52AF2AEEB426004FDBAD /* PauseView.swift */; };
 		229C52B22AEEB42E004FDBAD /* LoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C52B12AEEB42E004FDBAD /* LoseView.swift */; };
+		22A3F7702B1BED5A00C000D6 /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3F76F2B1BED5A00C000D6 /* Skin.swift */; };
 		22A52ACC2B0B2DF600B21720 /* NextShapeView3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A52ACB2B0B2DF600B21720 /* NextShapeView3D.swift */; };
 		22A52ACE2B0B452900B21720 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A52ACD2B0B452900B21720 /* Cell.swift */; };
 		22C28AA92AFC31AC002A753A /* Frame2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C28AA82AFC31AC002A753A /* Frame2D.swift */; };
@@ -100,6 +101,7 @@
 		226E66AE2AE059A80084B35D /* Cell2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell2D.swift; sourceTree = "<group>"; };
 		229C52AF2AEEB426004FDBAD /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
 		229C52B12AEEB42E004FDBAD /* LoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseView.swift; sourceTree = "<group>"; };
+		22A3F76F2B1BED5A00C000D6 /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
 		22A52ACB2B0B2DF600B21720 /* NextShapeView3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextShapeView3D.swift; sourceTree = "<group>"; };
 		22A52ACD2B0B452900B21720 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		22C28AA82AFC31AC002A753A /* Frame2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame2D.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				222EDE8F2AF26166005882F4 /* UserCustomization.swift */,
+				22A3F76F2B1BED5A00C000D6 /* Skin.swift */,
 			);
 			path = ShopModel;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				223CD8282AEA873B00A0134A /* T_Shape.swift in Sources */,
 				22D40FF02B13BC2200FB1E76 /* MoneyGainingLogic.swift in Sources */,
 				22A52ACC2B0B2DF600B21720 /* NextShapeView3D.swift in Sources */,
+				22A3F7702B1BED5A00C000D6 /* Skin.swift in Sources */,
 				22365F8C2AFD579B00270FEE /* NextShapeView.swift in Sources */,
 				222EFF402B02134A00C392AE /* Frame3D.swift in Sources */,
 				22D40FF32B13C5A700FB1E76 /* ShopCard.swift in Sources */,

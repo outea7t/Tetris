@@ -79,6 +79,7 @@ struct MainMenu: View {
                             .padding(.top, 15)
                             .padding(.leading, 20)
                     }
+                    
                     Spacer()
                     
                     // MARK: Settings Button

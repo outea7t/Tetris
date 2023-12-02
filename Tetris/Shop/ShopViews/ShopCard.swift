@@ -10,48 +10,103 @@ import SwiftUI
 struct ShopCard: View {
     var isBuyed: Bool
     var isSelected: Bool
+    var skinID: Int
     
-    private let backgroundColor = Color(#colorLiteral(red: 0.03935023397, green: 0.008918602951, blue: 0.3424890637, alpha: 1))
-    private let buyedBackgroundColor = Color(#colorLiteral(red: 0.1214722916, green: 0.2701452374, blue: 0.5730941296, alpha: 1))
+    private let backgroundColor = Color(#colorLiteral(red: 0.03529411765, green: 0.02352941176, blue: 0.1607843137, alpha: 1))
+    private let buyedBackgroundColor = Color(#colorLiteral(red: 0.05098039216, green: 0.03529411765, blue: 0.2980392157, alpha: 1))
     private let selectedStrokeColor = Color(#colorLiteral(red: 0.4960303903, green: 0.568154037, blue: 1, alpha: 1))
     
-    private let textColor = Color(#colorLiteral(red: 0.04141693562, green: 0.006711484864, blue: 0.3404637873, alpha: 1))
+    private let startImageName = "ShopSkinTexture-"
+    private let strokeGradientColors: [Color] = [
+        Color(#colorLiteral(red: 0.4868299365, green: 0.566298604, blue: 1, alpha: 1)),
+        Color(#colorLiteral(red: 0.337254902, green: 0.4117647059, blue: 1, alpha: 1)),
+        Color(#colorLiteral(red: 0.46964854, green: 0.3869253993, blue: 0.9994549155, alpha: 1)),
+        Color(#colorLiteral(red: 0.4868299365, green: 0.566298604, blue: 1, alpha: 1))
+    ]
+    
+    @State private var isAnimated: Bool = false
+    
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 50)
-                .frame(width: isSelected ? 320 : 300, height: isSelected ? 420 : 400)
-                .foregroundStyle(selectedStrokeColor)
-            
-            RoundedRectangle(cornerRadius: 40)
-                .frame(width: 300, height: 400)
-                .foregroundStyle(isBuyed ? buyedBackgroundColor : backgroundColor)
-                .overlay {
-                    VStack {
-                        Image("DetectedPlane", bundle: nil)
-                            .resizable()
-                            .frame(width: 200, height: 200)
-                            .padding(.top, 30)
-                        
-                        Spacer()
-                        
-                        if !self.isBuyed {
-                            PixelText(text: "100", fontSize: 30, color: .white)
-                                .padding(.bottom, 30)
-                            RoundedRectangle(cornerRadius: 50)
-                                .frame(width: 250, height: 50)
-                                .foregroundStyle(selectedStrokeColor)
-                                .overlay {
-                                    PixelText(text: "buy", fontSize: 30, color: self.textColor)
-                                }
-                                .padding(.bottom, 20)
-                        }
+            if self.isSelected {
+                // MARK: Cell Shadow
+                RoundedRectangle(cornerRadius: 0)
+                
+                    .frame(width: 500, height: 500)
+                    .foregroundStyle(LinearGradient(colors: self.strokeGradientColors,
+                                                    startPoint: .top,
+                                                    endPoint: .bottom))
+                    .rotationEffect(.degrees((self.isAnimated && self.isSelected) ? 0.0 : 360.0))
+                    .animation(
+                        Animation.easeInOut(duration: 4.0)
+                            .repeatForever(autoreverses: false)
+                    )
+                    .mask {
+                        RoundedRectangle(cornerRadius: 40)
+                            .frame(width: 270, height: 360)
+                            .blur(radius: 22)
                     }
+            }
+            
+            // MARK: Cell Heart
+            RoundedRectangle(cornerRadius: 32)
+                .frame(width: 250, height: 335)
+                .foregroundStyle( Color((self.isBuyed && !self.isSelected) ? self.buyedBackgroundColor : self.backgroundColor)
+                .shadow(.inner(color: .black.opacity(0.3),
+                               radius: self.isSelected ? 20 : 0,
+                               x: self.isSelected ? 30 : 0,
+                               y: self.isSelected ? 45 : 0))
+                )
+            
+            
+            // MARK: Cell Stroke
+            RoundedRectangle(cornerRadius: 40)
+                .frame(width: 500, height: 500)
+                .foregroundStyle(LinearGradient(colors: self.strokeGradientColors,
+                                                startPoint: .top,
+                                                endPoint: .bottom))
+                .rotationEffect(.degrees((self.isAnimated && self.isSelected) ? 0.0 : 360.0))
+                .animation(
+                    Animation.easeInOut(duration: 4.0)
+                        .repeatForever(autoreverses: false)
+                )
+                .mask {
+                    RoundedRectangle(cornerRadius: 40)
+                        .stroke(lineWidth: 15)
+                        .frame(width: 265, height: 350)
+                        
                 }
             
+            VStack {
+                // MARK: Skin Image
+                Image("\(self.startImageName)\(self.skinID)", bundle: nil)
+                    .resizable()
+                    .frame(width: 140, height: 133)
+                    .shadow(color: .black.opacity(0.5), radius: 15, x: 15, y: 15)
+                    .padding(.top, 40)
+                
+                Spacer()
+                
+                // MARK: Skin Price
+                HStack {
+                    PixelText(text: "100", fontSize: 30, color: .white)
+                    
+                    Image("Dollar", bundle: nil)
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .shadow(color: .black.opacity(0.5), radius: 15, x: 15, y: 15)
+                }
+                
+                Spacer()
+            }
+            .frame(height: 350)
+        }
+        .onAppear {
+            self.isAnimated.toggle()
         }
     }
 }
 
 #Preview {
-    ShopCard(isBuyed: true, isSelected: true)
+    ShopCard(isBuyed: true, isSelected: true, skinID: 0)
 }

@@ -12,7 +12,7 @@ struct EndGameButton: View {
     private let buttonBackgroundColor = Color(#colorLiteral(red: 0.09019607843, green: 0.1058823529, blue: 0.2509803922, alpha: 1))
     private let strokeGradientColors = [
         Color(#colorLiteral(red: 0.4868299365, green: 0.566298604, blue: 1, alpha: 1)),
-        Color(#colorLiteral(red: 0.3389918506, green: 0.4124396443, blue: 1, alpha: 1)),
+        Color(#colorLiteral(red: 0.337254902, green: 0.4117647059, blue: 1, alpha: 1)),
         Color(#colorLiteral(red: 0.46964854, green: 0.3869253993, blue: 0.9994549155, alpha: 1)),
         Color(#colorLiteral(red: 0.4868299365, green: 0.566298604, blue: 1, alpha: 1))
     ]
