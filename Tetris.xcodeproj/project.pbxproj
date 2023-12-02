@@ -46,6 +46,7 @@
 		229C52B02AEEB426004FDBAD /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C52AF2AEEB426004FDBAD /* PauseView.swift */; };
 		229C52B22AEEB42E004FDBAD /* LoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C52B12AEEB42E004FDBAD /* LoseView.swift */; };
 		22A3F7702B1BED5A00C000D6 /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3F76F2B1BED5A00C000D6 /* Skin.swift */; };
+		22A3F7722B1BF17100C000D6 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3F7712B1BF17100C000D6 /* Header.swift */; };
 		22A52ACC2B0B2DF600B21720 /* NextShapeView3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A52ACB2B0B2DF600B21720 /* NextShapeView3D.swift */; };
 		22A52ACE2B0B452900B21720 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A52ACD2B0B452900B21720 /* Cell.swift */; };
 		22C28AA92AFC31AC002A753A /* Frame2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C28AA82AFC31AC002A753A /* Frame2D.swift */; };
@@ -102,6 +103,7 @@
 		229C52AF2AEEB426004FDBAD /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
 		229C52B12AEEB42E004FDBAD /* LoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseView.swift; sourceTree = "<group>"; };
 		22A3F76F2B1BED5A00C000D6 /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
+		22A3F7712B1BF17100C000D6 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		22A52ACB2B0B2DF600B21720 /* NextShapeView3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextShapeView3D.swift; sourceTree = "<group>"; };
 		22A52ACD2B0B452900B21720 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		22C28AA82AFC31AC002A753A /* Frame2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame2D.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				22D40FF22B13C5A700FB1E76 /* ShopCard.swift */,
+				22A3F7712B1BF17100C000D6 /* Header.swift */,
 			);
 			path = ShopViews;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				229C52B02AEEB426004FDBAD /* PauseView.swift in Sources */,
 				223CD81E2AEA870D00A0134A /* S_Shape.swift in Sources */,
 				2229EB982AF4F90E007CAB88 /* HapticManager.swift in Sources */,
+				22A3F7722B1BF17100C000D6 /* Header.swift in Sources */,
 				220880692AD708B700B54E58 /* MainMenu.swift in Sources */,
 				22558B4A2AF7E98700F1B9E6 /* EndGameButton.swift in Sources */,
 				226E66A92ADFE55A0084B35D /* MenuRoundedButton.swift in Sources */,
