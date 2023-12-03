@@ -29,7 +29,7 @@ struct UserCustomization {
     static var buyedSkinIndexes: [Int] {
         get {
             guard let array = UserDefaults.standard.array(forKey: UserCustomizationKeys._buyedSkinIndexes.rawValue) as? [Int] else {
-                return []
+                return [0]
             }
             return array
         }

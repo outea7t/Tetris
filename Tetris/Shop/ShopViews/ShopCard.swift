@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct ShopCard: View {
-    var isBuyed: Bool
-    var isSelected: Bool
-    var skin: Skin
+    @Binding var skin: Skin
     
     private let backgroundColor = Color(#colorLiteral(red: 0.03529411765, green: 0.02352941176, blue: 0.1607843137, alpha: 1))
     private let buyedBackgroundColor = Color(#colorLiteral(red: 0.05098039216, green: 0.03529411765, blue: 0.2980392157, alpha: 1))
@@ -28,7 +26,7 @@ struct ShopCard: View {
     
     var body: some View {
         ZStack {
-            if self.isSelected {
+            if self.skin.isSelected {
                 // MARK: Cell Shadow
                 RoundedRectangle(cornerRadius: 0)
                 
@@ -36,7 +34,7 @@ struct ShopCard: View {
                     .foregroundStyle(LinearGradient(colors: self.strokeGradientColors,
                                                     startPoint: .top,
                                                     endPoint: .bottom))
-                    .rotationEffect(.degrees((self.isAnimated && self.isSelected) ? 0.0 : 360.0))
+                    .rotationEffect(.degrees((self.isAnimated && self.skin.isSelected) ? 0.0 : 360.0))
                     .animation(
                         Animation.easeInOut(duration: 4.0)
                             .repeatForever(autoreverses: false)
@@ -51,21 +49,21 @@ struct ShopCard: View {
             // MARK: Cell Heart
             RoundedRectangle(cornerRadius: 32)
                 .frame(width: 250, height: 335)
-                .foregroundStyle( Color((self.isBuyed && !self.isSelected) ? self.buyedBackgroundColor : self.backgroundColor)
+                .foregroundStyle( Color((self.skin.isBuyed && !self.skin.isSelected) ? self.buyedBackgroundColor : self.backgroundColor)
                 .shadow(.inner(color: .black.opacity(0.3),
-                               radius: self.isSelected ? 20 : 0,
-                               x: self.isSelected ? 30 : 0,
-                               y: self.isSelected ? 45 : 0))
+                               radius: self.skin.isSelected ? 20 : 0,
+                               x: self.skin.isSelected ? 30 : 0,
+                               y: self.skin.isSelected ? 45 : 0))
                 )
             
-            if self.isSelected {
+            if self.skin.isSelected {
                 // MARK: Cell Stroke
                 RoundedRectangle(cornerRadius: 40)
                     .frame(width: 500, height: 500)
                     .foregroundStyle(LinearGradient(colors: self.strokeGradientColors,
                                                     startPoint: .top,
                                                     endPoint: .bottom))
-                    .rotationEffect(.degrees((self.isAnimated && self.isSelected) ? 0.0 : 360.0))
+                    .rotationEffect(.degrees((self.isAnimated && self.skin.isSelected) ? 0.0 : 360.0))
                     .animation(
                         Animation.easeInOut(duration: 4.0)
                             .repeatForever(autoreverses: false)
@@ -104,10 +102,10 @@ struct ShopCard: View {
         .onAppear {
             self.isAnimated.toggle()
         }
-        .frame(height: self.isSelected ? 380 : 360)
+        .frame(height: self.skin.isSelected ? 380 : 360)
     }
 }
 
 #Preview {
-    ShopCard(isBuyed: true, isSelected: true, skin: Skin(skinID: 0, skinPrice: 100))
+    ShopCard(skin: Binding.constant(Skin(skinID: 0, skinPrice: 100, isSelected: true, isBuyed: true)))
 }
